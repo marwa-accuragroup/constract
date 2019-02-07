@@ -27,18 +27,33 @@ class PermissionMiddleware
         $link = $request->path();
 
 
-
-        $userMenu = UserMenu::where('groupId' , $userData->groupId )->get();
-        $mData = Menu::where('link' , $link)->first();
-
-    // dd($userMenu);
+        $userMenu = UserMenu::where('groupId', $userData->groupId)->get();
+        $mData = Menu::where('link', $link)->first();
 
 
-    //  if(array_search( $mData->id, array_column($userMenu, 'menuId')))
-       if($userMenu->contains('menuId', $mData->id ))
+       dd($mData);
+        foreach ($userMenu as $menu)
+        {
+
+            dd($mData->id);
+            if ($menu->menuId == $mData->id)
+            {
+                return $next($request);
+            }
+            else{
+                return redirect('admin/home')->with('error','You have not admin access');
+            }
+        }
+
+        /*if (array_search($mData->id, array_column($userMenu, 'menuId')))
+        {
+            dd($mData);
+
+        }
+      /* if($userMenu->contains('menuId', $mData->id ))
           {
             return $next($request);
         }
-        return redirect('admin/home')->with('error','You have not admin access');
+        return redirect('admin/home')->with('error','You have not admin access');*/
     }
 }

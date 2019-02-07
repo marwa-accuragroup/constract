@@ -265,43 +265,6 @@
 
                             </li>
                         @if (Auth::user()->groupId == 1)
-                            <!--- Admin -->
-                                <li class="nav-item {{ Request::is('admin/usergroups*') || Request::is('admin/menu*')|| Request::is('admin/admin*')
-                    ? 'active' : '' }}">
-                                    <a href="javascript:;" class="nav-link nav-toggle">
-                                        <i class="fa fa-users"></i>
-                                        <span class="title"> @lang('admin.User & Groups')  </span>
-                                        <span class="selected"></span>
-                                        <span class="arrow open"></span>
-
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li class="nav-item start {{ Request::is('admin/menu*') ? 'active' : '' }}">
-                                            <a href="{{ action('Admin\MenuController@index') }}" class="nav-link ">
-                                                <i class="fa fa-list"></i>
-                                                <span class="title"> @lang('admin.Menu') </span>
-                                                <span class="selected"></span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item start {{ Request::is('admin/usergroups*') ? 'active' : '' }}">
-                                            <a href="{{ action('Admin\UsergroupsController@index') }}"
-                                               class="nav-link ">
-                                                <i class="fa fa-star"></i>
-                                                <span class="title"> @lang('admin.User groups')</span>
-                                                <span class="selected"></span>
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item start {{ Request::is('admin/admin*') ? 'active' : '' }}">
-                                            <a href="{{ action('Admin\AdminController@index') }}" class="nav-link ">
-                                                <i class="fa fa-users"></i>
-                                                <span class="title"> @lang('admin.Users')</span>
-                                                <span class="selected"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
                                 <?php  $categories = \App\Menu::where('parentId', '=', 0)->get();?>
                                 @foreach($categories as $category)
                                     <li class="nav-item  ">
@@ -317,7 +280,6 @@
                                         @endif
                                     </li>
                                 @endforeach
-
                             @else
                                 <?php  $userMenu = \App\UserMenu::where('groupId', '=', Auth::user()->groupId)->get();
                                 foreach ($userMenu as $m) {
