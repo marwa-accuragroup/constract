@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth', 'locale'], 'prefix' => 'admin', 'namespac
     Route::resource('admin', 'AdminController');
     Route::get('/delAdmin/{id}', 'AdminController@delAdmin');
 
+    /*Translate=======*/
+    Route::resource('translate', 'TranslateController');
 
 });
 

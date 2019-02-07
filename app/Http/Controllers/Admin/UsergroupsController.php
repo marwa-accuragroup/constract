@@ -36,8 +36,8 @@ class UsergroupsController extends Controller
     {
         //
         if (Auth::user()) {
-            $allMenu = Menu::where('parentId' ,'!=' , 0)->get();
-            return view('admin.group.create')->with([ 'allMenu' => $allMenu ,  ]);
+            $allMenu = Menu::where('parentId', '!=', 0)->get();
+            return view('admin.group.create')->with(['allMenu' => $allMenu,]);
         } else {
             return redirect()->route('login');
         }
@@ -46,13 +46,13 @@ class UsergroupsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
-         if (Auth::user()) {
+        if (Auth::user()) {
             $this->validate($request, [
                 'name' => 'required|unique:usergroups',
             ]);
@@ -68,11 +68,11 @@ class UsergroupsController extends Controller
                 $insert_m->groupId = $insert->id;
                 $insert_m->menuId = $m;
                 $insert_m->value = 1;
-               $insert_m->save();
+                $insert_m->save();
 
                 //Controller Fuction
-                $function = $request->input('permission_' . $m);
-               // var_dump($function);
+               /* $function = $request->input('permission_' . $m);
+                // var_dump($function);
                 foreach ($function as $fun) {
                     $insertFunc = new UserController();
                     $insertFunc->groupId = $insert->id;
@@ -80,7 +80,7 @@ class UsergroupsController extends Controller
                     $insertFunc->name = $fun;
                     $insertFunc->value = 1;
                     $insertFunc->save();
-                }
+                }*/
             }
             return redirect()->action('Admin\UsergroupsController@index');
         } else {
@@ -91,7 +91,7 @@ class UsergroupsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -102,13 +102,13 @@ class UsergroupsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-         $editData = Usergroups::find($id);
-        $allMenu = Menu::where('parentId' ,'!=' , 0)->get();
+        $editData = Usergroups::find($id);
+        $allMenu = Menu::where('parentId', '!=', 0)->get();
         $groupMenu = UserMenu::where('groupId', '=', $id)->get();
         return view('admin.group.edit')->with(['editData' => $editData, 'allMenu' => $allMenu, 'groupMenu' => $groupMenu]);
     }
@@ -116,13 +116,13 @@ class UsergroupsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-       if (Auth::user()) {
+        if (Auth::user()) {
             $this->validate($request, [
                 'name' => 'required',
             ]);
@@ -132,11 +132,11 @@ class UsergroupsController extends Controller
             $update->name = $request->input('name');
             //menu
             $menu = $request->input('menu');
-           // $permission = json_encode($menu);
+            // $permission = json_encode($menu);
             $update->permission = '';
             $update->save();
             //
-          
+
             UserMenu::where('groupId', $id)->delete();
             foreach ($menu as $m) {
 
@@ -147,10 +147,10 @@ class UsergroupsController extends Controller
                 $insert_m->save();
 
                 //Controller Fuction
-               UserController::where([ 'menuId'=> $m , 'groupId'=> $id])->delete();
+             /*   UserController::where(['menuId' => $m, 'groupId' => $id])->delete();
                 $function = $request->input('permission_' . $m);
-             //  var_dump($function);
-            // dd($function);
+                //  var_dump($function);
+                // dd($function);
                 foreach ($function as $fun) {
                     $insertFunc = new UserController();
                     $insertFunc->groupId = $id;
@@ -158,7 +158,7 @@ class UsergroupsController extends Controller
                     $insertFunc->name = $fun;
                     $insertFunc->value = 1;
                     $insertFunc->save();
-                }
+                }*/
             }
 
             return redirect()->action('Admin\UsergroupsController@index');
@@ -170,20 +170,18 @@ class UsergroupsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function delgroup($id)
     {
-        $checkData =  DB::table('users-web')->where('groupId', '=', $id)->get();
-        if(count($checkData) > 0)
-        {
-           // return redirect()->action('Admin\UsergroupsController@index');
-        }
-        else{
+        $checkData = DB::table('users')->where('groupId', '=', $id)->get();
+        if (count($checkData) > 0) {
+            // return redirect()->action('Admin\UsergroupsController@index');
+        } else {
             DB::table('usergroups')->where('id', '=', $id)->delete();
-            UserMenu::where('groupId' ,$id)->delete();
-            UserController::where('groupId' ,$id)->delete();
+            UserMenu::where('groupId', $id)->delete();
+            UserController::where('groupId', $id)->delete();
             return redirect()->action('Admin\UsergroupsController@index');
         }
 
