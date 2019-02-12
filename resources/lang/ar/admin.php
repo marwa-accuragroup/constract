@@ -43,11 +43,23 @@ foreach ($allWords as $data) {
         'Serial No' => 'الرقم التسلسلى',
         'Password' => 'كلمه المرور',
         'Phone' => 'رقم الهاتف',
+        'Icon' => 'الايقونه',
         //
+        'Categories' => 'اقسام المشروعات',
+        'Site' => 'المواقع',
         'Word' => 'الكلمه',
+        'Translate' => 'الترجمه',
         'Arabic Translation' => ' الترجمه العربى',
         'English Translation' => 'الترجمه الانجليزى ',
         'Save Changes' => 'حفظ التعديلات ',
+        'Edit Profile' => 'تعديل حسابى ',
+        'Cpanel' => 'لوحه التحكم',
+        'All rights reserved.' => 'جميع الحقوق محفوظه.',
+        'Hand-crafted & Made with' => 'تطوير شركه',
+        'Accura Group' => 'اكيورا جروب',
+        'Notes' => 'ملاحظات',
+        'Contractor' => 'المقاولين',
+
 
 
         $data->wordKey => $data->name_ar

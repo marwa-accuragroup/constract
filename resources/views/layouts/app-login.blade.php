@@ -1,209 +1,128 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html class="loading" lang="en" data-textdirection="rtl">
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title> لوحه التحكم </title>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-
-
-    <style>
-        /*
- * Specific styles of signin component
- */
-        /*
-         * General styles
-         */
-        body, html {
-            height: 100%;
-            background-repeat: no-repeat;
-            background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
-        }
-
-        .card-container.card {
-            max-width: 350px;
-            padding: 40px 40px;
-        }
-
-        .btn {
-            font-weight: 700;
-            height: 36px;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            user-select: none;
-            cursor: default;
-        }
-
-        /*
-         * Card component
-         */
-        .card {
-            background-color: #F7F7F7;
-            /* just in case there no content*/
-            padding: 20px 25px 30px;
-            margin: 0 auto 25px;
-            margin-top: 50px;
-            /* shadows and rounded borders */
-            -moz-border-radius: 2px;
-            -webkit-border-radius: 2px;
-            border-radius: 2px;
-            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-img-card {
-            width: 96px;
-            height: 96px;
-            margin: 0 auto 10px;
-            display: block;
-            -moz-border-radius: 50%;
-            -webkit-border-radius: 50%;
-            border-radius: 50%;
-        }
-
-        /*
-         * Form styles
-         */
-        .profile-name-card {
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            margin: 10px 0 0;
-            min-height: 1em;
-        }
-
-        .reauth-email {
-            display: block;
-            color: #404040;
-            line-height: 2;
-            margin-bottom: 10px;
-            font-size: 14px;
-            text-align: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        .form-signin #inputEmail,
-        .form-signin #inputPassword {
-            direction: ltr;
-            height: 44px;
-            font-size: 16px;
-        }
-
-        .form-signin input[type=email],
-        .form-signin input[type=password],
-        .form-signin input[type=text],
-        .form-signin button {
-            width: 100%;
-            display: block;
-            margin-bottom: 10px;
-            z-index: 1;
-            position: relative;
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        .form-signin .form-control:focus {
-            border-color: rgb(104, 145, 162);
-            outline: 0;
-            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-            box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-        }
-
-        .btn.btn-signin {
-            /*background-color: #4d90fe; */
-            background-color: rgb(104, 145, 162);
-            /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
-            padding: 0px;
-            font-weight: 700;
-            font-size: 14px;
-            height: 36px;
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            border-radius: 3px;
-            border: none;
-            -o-transition: all 0.218s;
-            -moz-transition: all 0.218s;
-            -webkit-transition: all 0.218s;
-            transition: all 0.218s;
-        }
-
-        .btn.btn-signin:hover,
-        .btn.btn-signin:active,
-        .btn.btn-signin:focus {
-            background-color: rgb(12, 97, 33);
-        }
-
-        .forgot-password {
-            color: rgb(104, 145, 162);
-        }
-
-        .forgot-password:hover,
-        .forgot-password:active,
-        .forgot-password:focus{
-            color: rgb(12, 97, 33);
-        }
-    </style>
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
+    <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
+    <meta name="author" content="PIXINVENT">
+    <title>Login Page - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin
+        Dashboard
+    </title>
+    <link rel="apple-touch-icon" href="{{ URL ::to ('assets/admin/app-assets/images/ico/apple-icon-120.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ URL ::to ('assets/admin/app-assets/images/ico/favicon.ico')}}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+          rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
+          rel="stylesheet">
+    <!-- BEGIN VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/vendors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/forms/icheck/icheck.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/forms/icheck/custom.css')}}">
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN MODERN CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/custom-rtl.css')}}">
+    <!-- END MODERN CSS-->
+    <!-- BEGIN Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/pages/login-register.css')}}">
+    <!-- END Page Level CSS-->
+    <!-- BEGIN Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/assets/css/style-rtl.css')}}">
+    <!-- END Custom CSS-->
 </head>
-<body style="direction: rtl">
-
-
-<!--
-    you can substitue the span of reauth email for a input with the email and
-    include the remember me checkbox
-    -->
-<div class="container">
-    <div class="card card-container">
-        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-        <p id="profile-name" class="profile-name-card"></p>
-        <form class="form-signin" method="POST" action="{{ route('login') }}">
-            {{ csrf_field() }}
-            <span id="reauth-email" class="reauth-email"></span>
-
-
-            <input id="inputEmail" type="email" class="form-control" name="email" placeholder="البريد الالكترونى " value="{{ old('email') }}" required autofocus>
-            @if ($errors->has('email'))
-                <span class="help-block">
+<body class="vertical-layout vertical-menu 1-column   menu-expanded blank-page blank-page"
+      data-open="click" data-menu="vertical-menu" data-col="1-column">
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <section class="flexbox-container">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <div class="col-md-4 col-10 box-shadow-2 p-0">
+                        <div class="card border-grey border-lighten-3 m-0">
+                            <div class="card-header border-0">
+                                <div class="card-title text-center">
+                                    <div class="p-1">
+                                        <img src="{{ URL ::to ('assets/admin/app-assets/images/logo/logo-dark.png')}}" alt="branding logo">
+                                    </div>
+                                </div>
+                                <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
+                                    <span>تسجيل الدخول الى لوحه التحكم  </span>
+                                </h6>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <form class="form-horizontal form-simple" method="POST" action="{{ route('login') }}" novalidate>
+                                        {{ csrf_field() }}
+                                        <fieldset class="form-group position-relative has-icon-left mb-0">
+                                            <input name="email" type="text" class="form-control form-control-lg input-lg" id="user-name"
+                                                   placeholder="البريد الالكترونى "
+                                                   required>
+                                            <div class="form-control-position">
+                                                <i class="ft-mail"></i>
+                                            </div>
+                                            @if ($errors->has('email'))
+                                                <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-            @endif
-
-
-            <input id="inputPassword" type="password" class="form-control" placeholder="كلمه المرور" name="password" required>
-
-            @if ($errors->has('password'))
-                <span class="help-block">
+                                            @endif
+                                        </fieldset>
+                                        <fieldset class="form-group position-relative has-icon-left">
+                                            <input name="password" type="password" class="form-control form-control-lg input-lg" id="user-password"
+                                                   placeholder="كلمه المرور " required>
+                                            <div class="form-control-position">
+                                                <i class="la la-key"></i>
+                                            </div>
+                                            @if ($errors->has('password'))
+                                                <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-            @endif
+                                            @endif
+                                        </fieldset>
+                                        <div class="form-group row">
+                                            <div class="col-md-6 col-12 text-center text-md-left">
+                                                <fieldset>
+                                                    <input type="checkbox" id="remember-me" class="chk-remember">
+                                                    <label for="remember-me"> تذكرنى </label>
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-md-6 col-12 text-center text-md-right"></div>
 
+                                        </div>
+                                        <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i>
+                                            تسجيل الدخول</button>
+                                    </form>
+                                </div>
+                            </div>
 
-            <div id="remember" class="checkbox">
-
-            </div>
-            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit"> تسجيل</button>
-        </form><!-- /form -->
-        <!--a href="#" class="forgot-password">
-            هل نسيت كلمه المرور؟
-        </a-->
-    </div><!-- /card-container -->
-</div><!-- /container -->
-
-
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<!-- BEGIN VENDOR JS-->
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
+<!-- BEGIN VENDOR JS-->
+<!-- BEGIN PAGE VENDOR JS-->
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/forms/icheck/icheck.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/forms/validation/jqBootstrapValidation.js')}}"
+        type="text/javascript"></script>
+<!-- END PAGE VENDOR JS-->
+<!-- BEGIN MODERN JS-->
+<script src="{{ URL ::to ('assets/admin/app-assets/js/core/app-menu.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/js/core/app.js')}}" type="text/javascript"></script>
+<!-- END MODERN JS-->
+<!-- BEGIN PAGE LEVEL JS-->
+<script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/forms/form-login-register.js')}}" type="text/javascript"></script>
+<!-- END PAGE LEVEL JS-->
 </body>
 </html>

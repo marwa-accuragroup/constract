@@ -2,17 +2,15 @@
 @section('content')
 
 <!-- BEGIN SAMPLE FORM PORTLET-->
-<div class="portlet box  green ">
-    <div class="portlet-title">
-        <div class="caption">
-            <i class="fa fa-plus"></i>  اضافه عنصر جديد </div>
-        <div class="tools"></div>
-    </div>
-    <div class="portlet-body form">
-        <form class="form-horizontal"
+<div class="card ">
+
+    <div class="card-body">
+        <form class="form"
               role="form" enctype="multipart/form-data" method="post" action="{{ action('Admin\MenuController@store') }}">
             {{ csrf_field() }}
             <div class="form-body">
+
+                <h4 class="form-section"><i class="la la-plus-circle"></i>   @lang('admin.Add new item')</h4>
 
 
                 <ul>

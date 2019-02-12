@@ -28,4 +28,17 @@ class HomeController extends Controller
 
         return view('home');
     }
+
+    public function changeLang($lang)
+    {
+        Session(['locale' => $lang]);
+        return redirect()->back();
+    }
+
+    public function error()
+    {
+
+        return view('error.custom');
+    }
+
 }

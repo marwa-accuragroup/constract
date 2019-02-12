@@ -1,21 +1,16 @@
 @extends('layouts.app')
 @section('content')
-
     <!-- BEGIN SAMPLE FORM PORTLET-->
-    <div class="portlet box  green ">
-        <div class="portlet-title">
-            <div class="caption">
-                <i class="fa fa-plus"></i> @lang('admin.Add new item')  </div>
-            <div class="tools"></div>
-        </div>
-        <div class="portlet-body form">
-            <form class="form-horizontal"
+    <div class="card ">
+
+        <div class="card-body">
+            <form class="form"
                   role="form" enctype="multipart/form-data" method="post"
                   action="{{ action('Admin\UsergroupsController@store') }}">
                 {{ csrf_field() }}
                 <div class="form-body">
 
-
+                    <h4 class="form-section"><i class="la la-plus-circle"></i> @lang('admin.Add new item')</h4>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <div class="alert alert-danger"> {{ $error }}</div>
@@ -26,11 +21,10 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">@lang('admin.Name') </label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="name" nameAr="الاسم"
+                            <input type="text" class="form-control" name="name"
                                    value="{{ old('name') }}"></div>
                     </div>
 
-                    <hr/>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">@lang('admin.Permission') </label>
@@ -45,7 +39,7 @@
                                                    value="{{  $menu->id }}"> {{ $menu->name_ar  }}
 
 
-                                            <!--ul>
+                                        <!--ul>
                                                 <li><input type="checkbox" name="permission_{{  $menu->id }}[]"
                                                            value="index"> عرض الكل
                                                 </li>
@@ -84,15 +78,16 @@
 
 
                 </div>
-                <div class="form-actions">
-                    <div class="row">
-                        <div class="col-md-offset-4 col-md-8">
-                            <button type="submit" class="btn green">@lang('admin.Save') </button>
-                            <button type="reset" class="btn default"
-                                    onclick="window.history.back()">@lang('admin.Cancel')</button>
-                        </div>
-                    </div>
-                </div>
+
+
+                <div class="form-actions text-center">
+                    <button type="submit" class="btn btn-primary btn-min-width box-shadow-1 ml-1">
+                        <i class="la la-check-square-o"></i>
+                        @lang('admin.Save') </button>
+                    <a onclick="window.history.back()"
+                       class="btn btn-warning btn-min-width box-shadow-1 mr-1"> <i class="ft-x"></i>
+                        @lang('admin.Cancel')
+                    </a></div>
             </form>
         </div>
     </div>

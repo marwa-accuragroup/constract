@@ -29,6 +29,7 @@ class TranslateController extends Controller
     public function create()
     {
         //
+        return view('admin.translate.create');
     }
 
     /**
@@ -39,7 +40,18 @@ class TranslateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'wordKey' => 'required',
+            'name_ar' => 'required',
+            'name_en' => 'required',
+        ]);
+
+        $insert =  new Translate();
+        $insert->wordKey = $request->input('wordKey' );
+        $insert->name_ar = $request->input('name_ar' );
+        $insert->name_en = $request->input('name_en' );
+        $insert->save();
+        return redirect()->action('Admin\TranslateController@index');
     }
 
     /**

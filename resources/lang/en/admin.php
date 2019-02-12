@@ -43,11 +43,22 @@ foreach ($allWords as $data) {
         'Serial No' => 'Serial No',
         'Password' => 'Password',
         'Phone' => 'Phone',
+        'Icon' => 'Icon',
         //
+        'Categories' => 'Projects Categories',
+        'Site' => 'Site',
         'Word' => 'Word',
+        'Translate' => 'Translate',
         'Arabic Translation' => 'Arabic Translation',
         'English Translation' => 'English Translation',
         'Save Changes' => 'Save Changes',
+        'Edit Profile' => 'Edit Profile',
+        'Cpanel' => 'Cpanel',
+        'All rights reserved.' => 'All rights reserved.',
+        'Hand-crafted & Made with' => 'Devloped By',
+        'Accura Group' => 'Accura Group',
+        'Notes' => 'Notes',
+        'Contractor' => 'Contractor',
 
 
         $data->wordKey => $data->name_en

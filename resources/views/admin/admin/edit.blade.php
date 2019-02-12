@@ -1,19 +1,16 @@
 @extends('layouts.app')
 @section('content')
 
-<!-- BEGIN SAMPLE FORM PORTLET -->
-<div class="portlet box  green ">
-    <div class="portlet-title">
-        <div class="caption">
-            <i class="fa fa-pencil"></i>@lang('admin.Edit item')</div>
-        <div class="tools"></div>
-    </div>
-    <div class="portlet-body form">
-        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data"
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="card ">
+
+        <div class="card-body">
+            <form class="form" role="form" method="post" enctype="multipart/form-data"
               action="{{ action('Admin\AdminController@update' ,  $editData->id) }}">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
             <div class="form-body">
+                <h4 class="form-section"><i class="la la-plus-circle"></i> @lang('admin.Edit item')</h4>
 
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -22,11 +19,11 @@
                 </ul>
 
 
-                <div class="form-group">
+                <!--div class="form-group">
                     <label class="col-md-3 control-label">@lang('admin.Serial No') </label>
                     <div class="col-md-9">
                         <input type="text" class="form-control" name="serialNo" readonly   value="{{ $editData->serialNo }}"> </div>
-                </div>
+                </div-->
 
 
 
@@ -77,14 +74,14 @@
 
 
             </div>
-            <div class="form-actions">
-                <div class="row">
-                    <div class="col-md-offset-4 col-md-8">
-                        <button type="submit" class="btn green">@lang('admin.Save') </button>
-                        <button type="button" class="btn default" onclick="window.history.back()">@lang('admin.Cancel')</button>
-                    </div>
-                </div>
-            </div>
+                <div class="form-actions text-center">
+                    <button type="submit" class="btn btn-primary btn-min-width box-shadow-1 ml-1">
+                        <i class="la la-check-square-o"></i>
+                        @lang('admin.Save') </button>
+                    <a onclick="window.history.back()"
+                       class="btn btn-warning btn-min-width box-shadow-1 mr-1"> <i class="ft-x"></i>
+                        @lang('admin.Cancel')
+                    </a></div>
         </form>
     </div>
 </div>

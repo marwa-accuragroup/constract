@@ -1,10 +1,11 @@
-<ul class="sub-menu">
+<ul class="menu-content">
     @foreach($childs as $child)
-        <li class="nav-item start {{ Request::is('admin/'.$category->shortLink.'*') ? 'active' : '' }}">
+
+        <li class="nav-item start {{ Request::is($child->link.'*') ? 'active' : '' }}">
 
             <a href="{{ url('/'.$child->link)  }}" class="nav-link ">
                 <i class="{{ $child->icon }}"></i>
-                <span class="title">  {{ $child['name_'.$locale] }} </span>
+                <span class="title">  {{ $child['name_'.App::getLocale()] }} </span>
                 <span class="selected"></span>
             </a>
 

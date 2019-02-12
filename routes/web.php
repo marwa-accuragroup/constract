@@ -20,37 +20,21 @@ Route::get('/', function () {
         return redirect('/login');
     }
 });
-/*Auth=======*/
+
+/*Auth=======,'permission'*/
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::group(['middleware' => ['auth', 'locale'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['middleware' => ['auth', 'locale'  ], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+
+    //
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/changelang/{locale}', 'SettingController@changeLang');
-    /*Setting=======*/
-    Route::any('/setting/{id}/edit', 'SettingController@edit');
-    Route::any('/setting/update/{id}', 'SettingController@update');
-    Route::any('/setting/delItem', 'SettingController@delItem');
+    Route::get('/changelang/{locale}', 'HomeController@changeLang');
     /*Language=======*/
     Route::resource('language', 'LanguageController');
     Route::get('/destroyLang/{id}', 'LanguageController@destroyLang');
-    /*Slider=======*/
-    Route::resource('slider', 'SliderController');
-    Route::get('/deleteslider/{id}', 'SliderController@deleteslider');
-    /*Pages=======*/
-    Route::resource('page', 'PagesController');
-    Route::get('/destroyPage/{id}', 'PagesController@destroyPage');
-    /*Blog=======*/
-    Route::resource('news', 'NewsController');
-    Route::get('/deletenews/{id}', 'NewsController@deletenews');
-    /* Message ========*/
-    Route::get('message', 'MessageController@contactUs');
-    Route::get('subscribe', 'MessageController@subscribe');
-    Route::get('deletesubscribe/{id}', 'MessageController@deletesubscribe');
-    /*Category=======*/
-    Route::resource('category', 'CateoryController');
-    Route::get('/deleteCat/{id}', 'CateoryController@deleteCat');
-
+    /*Translate=======*/
+    Route::resource('translate', 'TranslateController');
     /*User Groups=======*/
     Route::resource('usergroups', 'UsergroupsController');
     Route::get('/delgroup/{id}', 'UsergroupsController@delgroup');
@@ -61,8 +45,24 @@ Route::group(['middleware' => ['auth', 'locale'], 'prefix' => 'admin', 'namespac
     Route::resource('admin', 'AdminController');
     Route::get('/delAdmin/{id}', 'AdminController@delAdmin');
 
-    /*Translate=======*/
-    Route::resource('translate', 'TranslateController');
+    Route::any('/error', 'HomeController@error');
+
+
+
+
+
+    /*Category=======*/
+    Route::resource('category', 'CateoryController');
+    Route::get('/deleteCat/{id}', 'CateoryController@deleteCat');
+    /*Site=======*/
+    Route::resource('site', 'SiteController');
+    Route::get('/delSite/{id}', 'SiteController@delSite');
+    /*Site=======*/
+    Route::resource('contractor', 'ContractorController');
+    Route::get('/delContractor/{id}', 'ContractorController@delContractor');
+
+
+
 
 });
 

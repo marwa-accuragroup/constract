@@ -16,6 +16,7 @@ class CreateCateoriesTable extends Migration
         Schema::create('cateories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('inHome');
+            $table->string('icon');
             $table->string('name');
             $table->string('tittle');
             $table->string('content');

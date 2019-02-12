@@ -2,19 +2,15 @@
 @section('content')
 
     <!-- BEGIN SAMPLE FORM PORTLET-->
-    <div class="portlet box  green ">
-        <div class="portlet-title">
-            <div class="caption">
-                <i class="fa fa-plus"></i> @lang('admin.Edit item')
-            </div>
-            <div class="tools"></div>
-        </div>
-        <div class="portlet-body form">
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" method="post"
+    <div class="card ">
+
+        <div class="card-body">
+            <form class="form" role="form" enctype="multipart/form-data" method="post"
                   action="{{ action('Admin\CateoryController@update' , $main->id) }}">
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
                 <div class="form-body">
+                    <h4 class="form-section"><i class="la la-plus-circle"></i> @lang('admin.Edit item')</h4>
 
 
                     <ul>
@@ -27,132 +23,44 @@
                     <div class="tabbable-custom ">
 
 
-                        <ul class="nav nav-tabs ">
-
-
-                            @foreach($allLang as $data)
-                                <li @if($data->symbol == 'ar') class="active" @endif>
-                                    <a href="#tab_{{$data->id}}" data-toggle="tab">
-                                        <img src="{{ URL ::to ('public/images/'.$data->flag)}}" width="20px;"
-                                             height="20px;"/>
-                                        {{$data->name}} </a>
-                                </li>
-                            @endforeach
-
-
-                        </ul>
                         <div class="tab-content">
-                            <?php $i =0 ?>
-                            @foreach($allLang as $data)
-                                <div class="tab-pane @if($data->symbol == 'ar') active @endif" id="tab_{{$data->id}}">
-                                    <div class="form-body">
-                                        @if($data->symbol == 'ar')
-                                            <input type="hidden" name="oldImage" value="{{ $main->imageName }}">
-                                            <div class="form-group ">
-                                                <label class="control-label col-md-3"> @lang('admin.Image')</label>
-                                                <div class="col-md-9">
-                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <div class="fileinput-preview thumbnail"
-                                                             data-trigger="fileinput"
-                                                             style="width: 200px; height: 150px;">
-
-                                                            <img src="{{ URL ::to ('public/images/'.$main->imageName)}}"/>
-                                                        </div>
-                                                        <div>
-                               <span class="btn red btn-outline btn-file">
-                                   <span class="fileinput-new"> Select image </span>
-                                   <span class="fileinput-exists"> Change </span>
-                                   <input type="file" name="imageName"> </span>
-                                                            <a href="javascript:;" class="btn red fileinput-exists"
-                                                               data-dismiss="fileinput"> Remove </a>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                             <div class="form-group">
-                    <label class="col-md-3 control-label">  القائمه الرئيسيه </label>
-                    <div class="col-md-9">
-                        <select name="parentId" class="form-control ">
-                            <option value="0" >لا يوجد</option>
-                            @foreach($allCategory as $cat)
-                                <option value="{{ $cat->id }}" @if($main->parentId == $cat->id ) selected  @endif>  {{ $cat->name }}</option>
-                            @endforeach
-
-                        </select>
-                    </div>
-                </div>
 
 
+                            <div class="form-body">
 
-                                        @endif
+                                <div class="form-group last">
+                                    <label class="control-label col-md-3">  @lang('admin.Name')
 
+                                    </label>
+                                    <div class="col-md-9">
 
+                                        <input type="text" class="form-control" name="name_ar" value="{{ $nameArr['ar'] }}">
 
-                                        <div class="form-group last">
-                                            <label class="control-label col-md-3">  @lang('admin.Name')
-
-                                            </label>
-                                            <div class="col-md-9">
-
-                                                <input type="text" class="form-control"  name="name_{{$data->symbol}}"  @foreach($nameArr as $name)
-                                                value="{{ $name }}"
-                                                        @endforeach>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group last">
-                                            <label class="control-label col-md-3">  @lang('admin.Tittel')
-
-                                            </label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control"  name="tittle_{{$data->symbol}}"  @foreach($tittleArr as $tittle)
-                                                value="{{ $tittle }}"
-                                                        @endforeach>
-
-
-
-                                            </div>
-                                        </div>
-
-
-
-
-                                        <!--div-- class="form-group last">
-                                            <label class="control-label col-md-3">  Content
-
-                                            </label>
-                                            <div class="col-md-9">
-                                                    <textarea class="ckeditor form-control"
-                                                              name="content_{{$data->symbol}}"
-                                                              rows="6">
-
-                                                         @foreach($contentsArr as $cont)
-                                                            {{ $cont }}
-                                                        @endforeach
-                                                    </textarea>
-
-                                            </div>
-                                        </div-->
-                                    </div>
-
-                                </div>
-                                    <?php  $i++ ?>
-                            @endforeach
-
-                            <div class="form-actions">
-                                <div class="row">
-                                    <div class="col-md-offset-4 col-md-8">
-                                        <button type="submit" class="btn green">@lang('admin.Save') </button>
-                                        <button type="button" class="btn default"
-                                                onclick="window.history.back()">@lang('admin.Cancel')
-                                        </button>
                                     </div>
                                 </div>
+
+                                <div class="form-group last">
+                                    <label class="control-label col-md-3">  @lang('admin.Icon')
+
+                                    </label>
+                                    <div class="col-md-9">
+
+                                        <input type="text" class="form-control" name="icon" value="{{ $main->icon }}">
+
+                                    </div>
+                                </div>
+
                             </div>
+
+                        </div>
+                        <div class="form-actions text-center">
+                            <button type="submit" class="btn btn-primary btn-min-width box-shadow-1 ml-1">
+                                <i class="la la-check-square-o"></i>
+                                @lang('admin.Save') </button>
+                            <a onclick="window.history.back()"
+                               class="btn btn-warning btn-min-width box-shadow-1 mr-1"> <i class="ft-x"></i>
+                                @lang('admin.Cancel')
+                            </a></div>
             </form>
 
         </div>

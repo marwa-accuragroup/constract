@@ -1,23 +1,58 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="row">
-        <div class="col-md-12">
-            <!-- BEGIN EXAMPLE TABLE PORTLET-->
-            <div class="portlet light bordered">
-                <div class="portlet-title">
-                    <div class="caption font-dark">
-                        <i class="icon-settings font-dark"></i>
-                        <span class="caption-subject bold uppercase">  @lang('admin.Show Data')  ---- @lang('admin.Project Number') </span>
-                    </div>
 
-
-
+    <div class="content-header row">
+        <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.Translate') </h3>
+            <div class="row breadcrumbs-top d-inline-block">
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ URL :: to ('/admin/home')}}">@lang('admin.Home') </a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#">@lang('admin.Translate')</a>
+                        </li>
+                        <li class="breadcrumb-item active"> @lang('admin.Show Data')
+                        </li>
+                    </ol>
                 </div>
-                <div class="portlet-body">
+            </div>
+        </div>
 
 
-                    <div class="table-scrollable">
+        <div class="content-header-right col-md-6 col-12">
+            <div class="dropdown float-md-right">
+                <div class="heading-elements">
+                    <a href="{{ action('Admin\TranslateController@create') }}"
+                       class="btn btn-primary box-shadow-1  btn-min-width ml-1 mr-1">
+                        @lang('admin.Add new item')
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+
+
+        <section id="dom">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title"></h4>
+                            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body card-dashboard">
                         <table class="table table-striped table-bordered table-advance table-hover">
                             <thead>
                             <tr>
@@ -58,14 +93,13 @@
                     </div>
 
 
-                    <div class="form-actions">
-                        <div class="row">
-                            <div class="col-md-offset-4 col-md-8">
-                                <button type="submit" class="btn green">@lang('admin.Save Changes')</button>
 
-                            </div>
-                        </div>
-                    </div>
+                            <div class="form-actions text-center">
+                                <button type="submit" class="btn btn-primary btn-min-width box-shadow-1 ml-1">
+                                    <i class="la la-check-square-o"></i>
+                                    @lang('admin.Save Changes') </button>
+                               </div>
+
 
 
                     </form>
@@ -76,6 +110,9 @@
 
 
     </div>
+        </section>
+    </div>
+
 
 
 

@@ -1,19 +1,15 @@
 @extends('layouts.app')
 @section('content')
-
-<!-- BEGIN SAMPLE FORM PORTLET -->
-<div class="portlet box  green ">
-    <div class="portlet-title">
-        <div class="caption">
-            <i class="fa fa-pencil"></i> تعديل عنصر</div>
-        <div class="tools"></div>
-    </div>
-    <div class="portlet-body form">
-        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data"
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="card ">
+    <div class="card-body">
+        <form class="form" role="form" method="post" enctype="multipart/form-data"
               action="{{ action('Admin\MenuController@update' ,  $lang->id) }}">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
             <div class="form-body">
+                <h4 class="form-section"><i class="la la-edit"></i>   @lang('admin.Edit item')</h4>
+
 
                 <ul>
                     @foreach ($errors->all() as $error)

@@ -1,506 +1,244 @@
-<!DOCTYPE html>
-<!--[if !IE]><!-->
-<?php  $locale = App::getLocale();  ?>
-<?php $pageName = basename(url()->current()) ?>
-@if($locale == 'ar')
-    <html lang="en" dir="rtl">
+<?php $locale = App::getLocale();?>
+        <!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="rtl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description"
+          content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
+    <meta name="keywords"
+          content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
+    <meta name="author" content="PIXINVENT">
+    <title>  {{ __('admin.Cpanel') }} </title>
+    <link rel="apple-touch-icon" href="{{ URL ::to ('assets/admin/app-assets/images/ico/apple-icon-120.png')}}">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="{{ URL ::to ('assets/admin/app-assets/images/ico/favicon.ico')}}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+          rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
+          rel="stylesheet">
+    <!-- BEGIN VENDOR CSS-->
+    @if($locale == 'ar')
+        <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/vendors.css')}}">
     @else
-        <html lang="en">
-        @endif
-        <!--<![endif]-->
-        <!-- BEGIN HEAD -->
+        <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css/vendors.css')}}">
+    @endif
+
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/datatable/datatables.min.css"')}}>
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/datatable/select.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/extensions/keyTable.dataTables.min.css')}}">
 
 
-        <head>
-            <meta charset="utf-8"/>
-            <!-- CSRF Token -->
-            <meta name="csrf-token" content="{{ csrf_token() }}">
-
-            @if($locale =='ar')
-                <title>لوحه التحكم | اسم المشروع </title>
-            @elseif($locale =='en')
-                <title> Cpanel | Project Name</title>
-            @endif
-
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta content="width=device-width, initial-scale=1" name="viewport"/>
-            <meta content="" name="description"/>
-            <meta content="" name="author"/>
-            <!-- BEGIN GLOBAL MANDATORY STYLES -->
-
-            <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
-                  type="text/css"/>
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/font-awesome/css/font-awesome.min.css')}}"
-                  rel="stylesheet" type="text/css"/>
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/simple-line-icons/simple-line-icons.min.css')}}"
-                  rel="stylesheet" type="text/css"/>
-
-            @if($locale =='ar')
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css')}}"
-                      rel="stylesheet" type="text/css"/>
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css')}}"
-                      rel="stylesheet" type="text/css"/>
-            @else
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap/css/bootstrap.min.css')}}"
-                      rel="stylesheet" type="text/css"/>
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css')}}"
-                      rel="stylesheet" type="text/css"/>
-
-            @endif
-
-        <!-- END GLOBAL MANDATORY STYLES -->
-            <!-- BEGIN PAGE LEVEL PLUGINS -->
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/select2/css/select2.min.css')}}"
-                  rel="stylesheet" type="text/css"/>
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/select2/css/select2-bootstrap.min.css')}}"
-                  rel="stylesheet" type="text/css"/>
-
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css')}}"
-                  rel="stylesheet" type="text/css"/>
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}"
-                  rel="stylesheet" type="text/css"/>
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css')}}"
-                  rel="stylesheet" type="text/css"/>
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css')}}"
-                  rel="stylesheet" type="text/css"/>
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/clockface/css/clockface.css')}}"
-                  rel="stylesheet" type="text/css"/>
 
 
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/morris/morris.css')}}"
-                  rel="stylesheet" type="text/css"/>
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/fullcalendar/fullcalendar.min.css')}}"
-                  rel="stylesheet" type="text/css"/>
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/jqvmap.css')}}"
-                  rel="stylesheet" type="text/css"/>
+    <!-- END VENDOR CSS-->
+    <!-- BEGIN MODERN CSS-->
+    @if($locale == 'ar')
+        <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/app.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/custom-rtl.css')}}">
+    @else
+        <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css/app.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css/custom.css')}}">
+    @endif
+<!-- END MODERN CSS-->
+    <!-- BEGIN Page Level CSS-->
+    @if($locale == 'ar')
+        <link rel="stylesheet" type="text/css"
+              href="{{ URL ::to ('assets/admin/app-assets/css-rtl/core/menu/menu-types/vertical-menu-modern.css')}}">
+        <link rel="stylesheet" type="text/css"
+              href="{{ URL ::to ('assets/admin/app-assets/css-rtl/core/colors/palette-gradient.css')}}">
+    @else
+        <link rel="stylesheet" type="text/css"
+              href="{{ URL ::to ('assets/admin/app-assets/css/core/menu/menu-types/vertical-menu-modern.css')}}">
+        <link rel="stylesheet" type="text/css"
+              href="{{ URL ::to ('assets/admin/app-assets/css/core/colors/palette-gradient.css')}}">
+    @endif
+    <link rel="stylesheet" type="text/css"
+          href="{{ URL ::to ('assets/admin/app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ URL ::to ('assets/admin/app-assets/vendors/css/charts/morris.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ URL ::to ('assets/admin/app-assets/fonts/simple-line-icons/style.css')}}">
 
-
-            <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css')}}"
-                  rel="stylesheet" type="text/css"/>
-
-            <!-- END PAGE LEVEL PLUGINS -->
-            <!-- BEGIN THEME GLOBAL STYLES -->
-            @if($locale =='ar')
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/css/components-rtl.min.css')}}"
-                      rel="stylesheet" id="style_components" type="text/css"/>
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/css/plugins-rtl.min.css')}}"
-                      rel="stylesheet" type="text/css"/>
-            @else
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/css/components.min.css')}}"
-                      rel="stylesheet" id="style_components" type="text/css"/>
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/css/plugins.min.css')}}"
-                      rel="stylesheet" type="text/css"/>
-                <!-- END THEME GLOBAL STYLES -->
-            @endif
-
-
-        <!-- BEGIN THEME LAYOUT STYLES -->
-            @if($locale =='ar')
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/layout-rtl.min.css')}}"
-                      rel="stylesheet" type="text/css"/>
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/themes/darkblue-rtl.min.css')}}"
-                      rel="stylesheet" type="text/css" id="style_color"/>
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/custom-rtl.min.css')}}"
-                      rel="stylesheet" type="text/css"/>
-            @elseif($locale =='en')
-
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/layout.min.css')}}"
-                      rel="stylesheet" type="text/css"/>
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/themes/darkblue.min.css')}}"
-                      rel="stylesheet" type="text/css" id="style_color"/>
-                <link href="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/css/custom.min.css')}}"
-                      rel="stylesheet" type="text/css"/>
-            @endif
-            <link rel='stylesheet'
-                  href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css'/>
-
-            <!-- END THEME LAYOUT STYLES -->
-            <link rel="shortcut icon" href="{{ URL ::to ('assets/site/logo.jpg')}}">
-        </head>
-        <!-- END HEAD -->
-        @if (Auth::guest())
-        @else
-            <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
-            <!-- BEGIN HEADER -->
-            <div class="page-header navbar navbar-fixed-top">
-                <!-- BEGIN HEADER INNER -->
-                <div class="page-header-inner ">
-                    <!-- BEGIN LOGO -->
-                    <div class="page-logo">
-
-                        <a href="#" style="margin: 0 0 0px">
-
-                            <h2 style="color: white ; "> Project </h2>
-
-                        <!--img src="{{ URL ::to ('assets/admin/logo.png')}}"
-                         style="width: 160px; height: 60px;" alt="logo" class="logo-default"/-->
-                        </a>
-                        <div class="menu-toggler sidebar-toggler">
-                            <span></span>
-                        </div>
-                    </div>
-                    <!-- END LOGO -->
-                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
-                       data-target=".navbar-collapse">
-                        <span></span>
+    @if($locale = 'ar')
+        <link rel="stylesheet" type="text/css"
+              href="{{ URL ::to ('assets/admin/app-assets/css-rtl/core/colors/palette-gradient.css')}}">
+        <!-- END Page Level CSS-->
+        <!-- BEGIN Custom CSS-->
+        <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/assets/css/style-rtl.css')}}">
+        <!-- END Custom CSS-->
+    @else
+        <link rel="stylesheet" type="text/css"
+              href="{{ URL ::to ('assets/admin/app-assets/css/core/colors/palette-gradient.css')}}">
+        <!-- END Page Level CSS-->
+        <!-- BEGIN Custom CSS-->
+        <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/assets/css/style.css')}}">
+    @endif
+</head>
+<body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar"
+      data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+<!-- fixed-top-->
+<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-dark navbar-shadow">
+    <div class="navbar-wrapper">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav flex-row">
+                <li class="nav-item mobile-menu d-md-none mr-auto"><a
+                            class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
+                                class="ft-menu font-large-1"></i></a></li>
+                <li class="nav-item mr-auto">
+                    <a class="navbar-brand" href="#">
+                        <img class="brand-logo" alt="modern admin logo"
+                             src="{{ URL ::to ('assets/admin/app-assets/images/logo/logo.png')}}">
+                        <h3 class="brand-text"> {{ __('admin.Cpanel') }} </h3>
                     </a>
-                    <!-- END RESPONSIVE MENU TOGGLER -->
-                    <!-- BEGIN TOP NAVIGATION MENU -->
-                    <div class="top-menu">
-                        <ul class="nav navbar-nav pull-right">
-                            <!-- BEGIN NOTIFICATION DROPDOWN -->
-                            @if (Auth::guest())
-                            @else
-                                <li class="dropdown dropdown-user">
-                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"
-                                       data-hover="dropdown"
-                                       data-close-others="true">
-
-                                        <span class="username username-hide-on-mobile"> @lang('admin.Change Language')   </span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-default">
-                                        <li>
-                                            <a href="{{ action('Admin\SettingController@changeLang' , 'ar') }}">
-                                                <i class="icon-globe"></i>@lang('admin.Arabic') </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="{{ action('Admin\SettingController@changeLang' , 'en') }}">
-                                                <i class="icon-globe"></i> {{ __('admin.English') }}  </a>
-                                        </li>
-
-                                    </ul>
-
-                                </li>
+                </li>
+                <li class="nav-item d-none d-md-block float-right"><a class="nav-link modern-nav-toggle pr-0"
+                                                                      data-toggle="collapse"><i
+                                class="toggle-icon ft-toggle-right font-medium-3 white"
+                                data-ticon="ft-toggle-right"></i></a></li>
+                <li class="nav-item d-md-none">
+                    <a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i
+                                class="la la-ellipsis-v"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-container content">
+            <div class="collapse navbar-collapse" id="navbar-mobile">
+                <ul class="nav navbar-nav mr-auto float-left">
+                    <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i
+                                    class="ficon ft-maximize"></i></a></li>
+                    </li>
+                </ul>
 
 
-                                <!-- BEGIN USER LOGIN DROPDOWN -->
-                                <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                                <li class="dropdown dropdown-user">
-                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"
-                                       data-hover="dropdown"
-                                       data-close-others="true">
-                                        <img alt="" class="img-circle"
-                                             src="{{ URL ::to ('assets/admin/en/assets/layouts/layout/img/avatar.png')}}"/>
-                                        <span class="username username-hide-on-mobile"> {{ Auth::user()->name }} </span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-default">
-                                        <!--li>
-                                            <a href="#">
-                                                <i class="icon-user"></i> My Profile </a>
-                                        </li>
-                                        <li class="divider"> </li-->
-                                        <li>
+                <ul class="nav navbar-nav float-right">
+                    <li class="dropdown dropdown-language nav-item">
+                        <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="flag-icon flag-icon-"></i>
+                            <span class="selected-language"></span> @lang('admin.Change Language') </a>
 
+                        <div class="dropdown-menu" aria-labelledby="dropdown-flag">
+                            <a class="dropdown-item" href="{{ action('Admin\HomeController@changeLang' , 'en') }}"><i
+                                        class="flag-icon flag-icon-gb"></i> {{ __('admin.English') }} </a>
+                            <a class="dropdown-item" href="{{ action('Admin\HomeController@changeLang' , 'ar') }}"><i
+                                        class="flag-icon flag-icon-ar"></i> @lang('admin.Arabic')</a>
 
-                                            <a href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
+                        </div>
+                    </li>
+                    <li class="dropdown dropdown-user nav-item">
+                        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                <span class="mr-1">
+                  <span class="user-name text-bold-700"> {{ Auth::user()->name }} </span>
+                </span>
+                            <span class="avatar avatar-online">
+                  <img src="{{ URL ::to ('assets/admin/app-assets/images/portrait/small/avatar-s-19.png')}}"
+                       alt="avatar"><i></i></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#"><i
+                                        class="ft-user"></i> {{ __('admin.Edit Profile') }} </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
-                                                <i class="icon-logout"></i> {{ __('admin.Logout') }}
-                                            </a>
+                                <i class="ft-power"></i> {{ __('admin.Logout') }}</a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                  style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        </li>
-                                    </ul>
-
-                                </li>
-                                <!-- END USER LOGIN DROPDOWN -->
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                  style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
+                    </li>
 
 
-
-
-                            @endif
-                        </ul>
-                    </div>
-                    <!-- END TOP NAVIGATION MENU -->
-                </div>
-                <!-- END HEADER INNER -->
+                </ul>
             </div>
-            <!-- END HEADER -->
-            <!-- BEGIN HEADER & CONTENT DIVIDER -->
-            <div class="clearfix"></div>
-            <!-- END HEADER & CONTENT DIVIDER -->
-            <!-- BEGIN CONTAINER -->
-            <div class="page-container">
-                <!-- BEGIN SIDEBAR -->
-                <div class="page-sidebar-wrapper">
-                    <!-- BEGIN SIDEBAR -->
-                    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                    <div class="page-sidebar navbar-collapse collapse">
-                        <!-- BEGIN SIDEBAR MENU -->
-                        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-                        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-                        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-                        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-                        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-                        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-
-                        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false"
-                            data-auto-scroll="true"
-                            data-slide-speed="200" style="padding-top: 20px">
-                            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
-                            <li class="sidebar-toggler-wrapper hide">
-                                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-                                <div class="sidebar-toggler">
-                                    <span></span>
-                                </div>
-                                <!-- END SIDEBAR TOGGLER BUTTON -->
-                            </li>
-                            <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-
-                            <li class="nav-item {{ Request::is('admin/home*') ? 'active' : '' }}">
-                                <a href="{{ URL :: to ('/admin/home')}}" class="nav-link nav-toggle">
-                                    <i class="icon-home"></i>
-                                    <span class="title"> @lang('admin.Home')  </span>
-                                    <span class="selected"></span>
-
-                                </a>
-
-                            </li>
-                        @if (Auth::user()->groupId == 1)
-                                <?php  $categories = \App\Menu::where('parentId', '=', 0)->get();?>
-                                @foreach($categories as $category)
-                                    <li class="nav-item  ">
-                                        <a href="javascript:;" class="nav-link nav-toggle">
-                                            <i class="{{ $category->icon }}"></i>
-                                            <span class="title">{{ $category['name_'.$locale] }} </span>
-                                            <span class="selected"></span>
-                                            <span class="arrow open"></span>
-
-                                        </a>
-                                        @if(count($category->childs))
-                                            @include('admin.sidebar.manageChild',['childs' => $category->childs])
-                                        @endif
-                                    </li>
-                                @endforeach
-                            @else
-                                <?php  $userMenu = \App\UserMenu::where('groupId', '=', Auth::user()->groupId)->get();
-                                foreach ($userMenu as $m) {
-                                    $mData = \App\Menu::find($m->menuId);
-                                    $m->link = $mData->link;
-                                    $m->icon = $mData->icon;
-                                    $m->name_ar = $mData->name_ar;
-
-                                }?>
-                                @foreach($userMenu as $mm)
-                                    <li class="nav-item ">
-                                        <a href="{{ url('/'.$mm->link)  }}" class="nav-link nav-toggle">
-                                            <i class="{{ $mm->icon }}"></i>
-                                            <span class="title">{{ $mm['name_'.$locale] }} </span>
-                                        </a>
-                                    </li>
-                                @endforeach
+        </div>
+    </div>
+</nav>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
 
+            <li class=" nav-item {{ Request::is('admin/home*') ? 'active' : '' }}">
+                <a href="{{ URL :: to ('/admin/home')}}"><i class="la la-home"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main"> @lang('admin.Home')</span></a>
+
+            </li>
+            <?php  $categories = \App\Menu::where('parentId', '=', 0)->get();?>
+            @foreach($categories as $category)
+                <li class=" nav-item {{ Request::is($category->link.'*') ? 'active' : '' }}">
+
+                    <a href="{{ url('/'.$category->link)  }}">
+                        <i class="{{ $category->icon }}"></i>
+                        <span class="menu-title" data-i18n="nav.dash.main">
+                            {{ $category['name_'.App::getLocale()] }} </span>
+                    </a>
+                    @if(count($category->childs))
+                        @include('admin.sidebar.manageChild',['childs' => $category->childs])
+                    @endif
+                </li>
+            @endforeach
 
 
-                            @endif
+        </ul>
+    </div>
+</div>
 
+<!-- ////////////////////////////////////////////////////////////////////////////-->
 
-                        </ul>
-                        <!-- END SIDEBAR MENU -->
-                        <!-- END SIDEBAR MENU -->
-                    </div>
-                    <!-- END SIDEBAR -->
-                </div>
-                <!-- END SIDEBAR -->
-                <!-- BEGIN CONTENT -->
-                <div class="page-content-wrapper">
-                    <!-- BEGIN CONTENT BODY -->
-                    <div class="page-content">
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            @yield('content')
+        </div>
+    </div>
+</div>
 
-                        @yield('content')
-
-
-                    </div>
-                    <!-- END CONTENT BODY -->
-                </div>
-                <!-- END CONTENT -->
-                <!-- BEGIN QUICK SIDEBAR -->
-                <a href="javascript:;" class="page-quick-sidebar-toggler">
-                    <i class="icon-login"></i>
-                </a>
-
-                <!-- END QUICK SIDEBAR -->
-            </div>
-            <!-- END CONTAINER -->
-            <!-- BEGIN FOOTER -->
-            <div class="page-footer">
-                <div class="page-footer-inner"></div>
-
-                <div class="scroll-to-top">
-                    <i class="icon-arrow-up"></i>
-                </div>
-            </div>
-
-            @endif
-            <!-- END FOOTER -->
-            <!--[if lt IE 9]>
-            <script src="../assets/global/plugins/respond.min.js"></script>
-            <script src="../assets/global/plugins/excanvas.min.js"></script>
-            <![endif]-->
-            <!-- BEGIN CORE PLUGINS -->
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jquery.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap/js/bootstrap.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/js.cookie.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jquery.blockui.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"
-                    type="text/javascript"></script>
-            <!-- END CORE PLUGINS -->
-            <!-- BEGIN PAGE LEVEL PLUGINS -->
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/moment.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}"
-                    type="text/javascript"></script>
-
-
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/clockface/js/clockface.js')}}"
-                    type="text/javascript"></script>
-
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/morris/morris.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/morris/raphael-min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/counterup/jquery.waypoints.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/counterup/jquery.counterup.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/amcharts.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/serial.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/pie.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/radar.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/themes/light.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/themes/patterns.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amcharts/themes/chalk.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/ammap/ammap.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/ammap/maps/js/worldLow.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/amcharts/amstockcharts/amstock.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/fullcalendar/fullcalendar.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/horizontal-timeline/horozontal-timeline.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/flot/jquery.flot.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/flot/jquery.flot.resize.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/flot/jquery.flot.categories.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jquery.sparkline.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js')}}"
-                    type="text/javascript"></script>
-            <!-- END PAGE LEVEL PLUGINS -->
-            <!-- BEGIN PAGE LEVEL PLUGINS -->
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/select2/js/select2.full.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/scripts/datatable.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/datatables/datatables.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/ckeditor/ckeditor.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/select2/js/select2.full.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')}}"
-                    type="text/javascript"></script>
-            <!-- END PAGE LEVEL PLUGINS -->
-            <!-- BEGIN THEME GLOBAL SCRIPTS -->
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/global/scripts/app.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/pages/scripts/table-datatables-managed.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/pages/scripts/components-select2.min.js')}}"
-                    type="text/javascript"></script>
-            <!-- END THEME GLOBAL SCRIPTS -->
-            <!-- BEGIN PAGE LEVEL SCRIPTS -->
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/pages/scripts/dashboard.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/pages/scripts/components-select2.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/pages/scripts/components-date-time-pickers.min.js')}}"
-                    type="text/javascript"></script>
-
-            <!-- END PAGE LEVEL SCRIPTS -->
-            <!-- BEGIN THEME LAYOUT SCRIPTS -->
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/scripts/layout.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/layout/scripts/demo.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/assets/layouts/global/scripts/quick-sidebar.min.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/'.$locale.'/custom.js')}}" type="text/javascript"></script>
-            <script src="{{ URL ::to ('assets/admin/custom.js')}}" type="text/javascript"></script>
-            <!-- END THEME LAYOUT SCRIPTS -->
-
-
-            <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
-            <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
-            <script>
-                $(document).ready(function () {
-                    // page is now ready, initialize the calendar...
-                    $('#calendarHome').fullCalendar({
-                        // put your options and callbacks here
-                      /*  events: [
-
-                            {
-                                title: '',
-                                start: '',
-                                url: ''
-                            },
-
-                        ]*/
-                    })
-                });
-            </script>
-            </body>
-
-        </html>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<footer class="footer footer-static footer-light navbar-border navbar-shadow">
+    <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+        <span class="float-md-left d-block d-md-inline-block">{{ __('admin.All rights reserved.') }}&copy; 2019 </span>
+        <span class="float-md-right d-block d-md-inline-blockd-none d-lg-block"> {{ __('admin.Hand-crafted & Made with') }}  <a
+                    href="http://accuragroup-eg.com/" target="_blank"> {{ __('admin.Accura Group') }} </a><i
+                    class="ft-heart pink"></i></span>
+    </p>
+</footer>
+<!-- BEGIN VENDOR JS-->
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
+<!-- BEGIN VENDOR JS-->
+<!-- BEGIN PAGE VENDOR JS-->
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/tables/datatable/datatables.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js')}}"
+        type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/tables/datatable/dataTables.keyTable.min.js')}}"
+        type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/charts/chart.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/charts/raphael-min.js')}}"
+        type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/charts/morris.min.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js')}}"
+        type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js')}}"
+        type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/data/jvector/visitor-data.js')}}" type="text/javascript"></script>
+<!-- END PAGE VENDOR JS-->
+<!-- BEGIN MODERN JS-->
+<script src="{{ URL ::to ('assets/admin/app-assets/js/core/app-menu.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/js/core/app.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script>
+<!-- END MODERN JS-->
+<!-- BEGIN PAGE LEVEL JS-->
+<!--script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/pages/dashboard-sales.js')}}"
+        type="text/javascript"></script-->
+<script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/tables/datatables-extensions/datatable-keytable.js')}}"
+        type="text/javascript"></script>
+<!-- END PAGE LEVEL JS-->
+</body>
+</html>

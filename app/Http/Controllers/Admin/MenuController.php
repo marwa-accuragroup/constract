@@ -21,7 +21,7 @@ class MenuController extends Controller
             $lang = Menu::all();
            // $lang = Menu::where('parentId' , '=', 0)->get();
 
-            $categories = Menu::where('parentId', '=', 0)->get();
+            $categories =   Menu::all(); // Menu::where('parentId', '=', 0)->get();
             $allCategories = Menu::pluck('name_ar','id')->all();
 
             return view('admin.menu.index')->with([ 'lang'=> $lang ,'categories'=> $categories  ,
