@@ -1,6 +1,22 @@
 @extends('layouts.app')
 @section('content')
 
+    <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+        <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.Contractor') </h3>
+        <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ URL :: to ('/admin/home')}}">@lang('admin.Home') </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#">@lang('admin.Contractor')</a>
+                    </li>
+                    <li class="breadcrumb-item active"> @lang('admin.Edit item')
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
     <section id="tabs-with-icons">
         <div class="row match-height">
             <div class="col-xl-12 col-lg-12">
@@ -37,7 +53,7 @@
                             </ul>
                             <div class="tab-content px-1 pt-1">
                                 <form class="form" role="form" enctype="multipart/form-data" method="post"
-                                      action="{{ action('Admin\SiteController@update' , $editData->id) }}">
+                                      action="{{ action('Admin\ContractorController@update' , $editData->id) }}">
                                     {{ csrf_field() }}
                                     {{ method_field('PATCH') }}
                                     @foreach($allLang as $data)

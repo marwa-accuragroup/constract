@@ -335,6 +335,7 @@ class ComposerStaticInite86f4ba8fb5e0434d3b9c71d64cf1e90
     );
 
     public static $classMap = array (
+        'App\\Beneficiaries' => __DIR__ . '/../..' . '/app/Beneficiaries.php',
         'App\\Cateory' => __DIR__ . '/../..' . '/app/Cateory.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\ContactUs' => __DIR__ . '/../..' . '/app/ContactUs.php',
@@ -343,10 +344,12 @@ class ComposerStaticInite86f4ba8fb5e0434d3b9c71d64cf1e90
         'App\\Helpers\\Helper' => __DIR__ . '/../..' . '/app/Helpers/Helper.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
         'App\\Http\\Controllers\\Admin\\CateoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CateoryController.php',
+        'App\\Http\\Controllers\\Admin\\ContractorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ContractorController.php',
         'App\\Http\\Controllers\\Admin\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HomeController.php',
         'App\\Http\\Controllers\\Admin\\LanguageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/LanguageController.php',
         'App\\Http\\Controllers\\Admin\\MenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MenuController.php',
         'App\\Http\\Controllers\\Admin\\SiteController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SiteController.php',
+        'App\\Http\\Controllers\\Admin\\SupervisorsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SupervisorsController.php',
         'App\\Http\\Controllers\\Admin\\TranslateController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TranslateController.php',
         'App\\Http\\Controllers\\Admin\\UsergroupsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UsergroupsController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -373,6 +376,7 @@ class ComposerStaticInite86f4ba8fb5e0434d3b9c71d64cf1e90
         'App\\Providers\\HelperServiceProvider' => __DIR__ . '/../..' . '/app/Providers/HelperServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Site' => __DIR__ . '/../..' . '/app/Site.php',
+        'App\\Supervisors' => __DIR__ . '/../..' . '/app/Supervisors.php',
         'App\\Translate' => __DIR__ . '/../..' . '/app/Translate.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\UserController' => __DIR__ . '/../..' . '/app/UserController.php',

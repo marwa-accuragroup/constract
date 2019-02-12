@@ -19,13 +19,13 @@ class ContractorController extends Controller
      */
     public function index()
     {
-        $allData = Site::all();
+        $allData = Contractor::all();
         foreach ($allData as $data) {
             $nameArr = json_decode($data->name, true);
             $data->name = $nameArr['ar'];
 
         }
-        return view('admin.site.index')->with(['allData' => $allData ]);
+        return view('admin.contractor.index')->with(['allData' => $allData ]);
     }
 
     /**
@@ -35,7 +35,8 @@ class ContractorController extends Controller
      */
     public function create()
     {
-        //
+        $allLang = Language::all();
+        return view('admin.contractor.create')->with(['allLang' => $allLang]);
     }
 
     /**
@@ -46,7 +47,24 @@ class ContractorController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name_ar' => 'required',
+        ]);
+        $allLang = Language::all();
+        foreach ($allLang as $data) {
+
+            $names[$data->symbol] = $request->input('name_' . $data->symbol);
+            $tittles[$data->symbol] = $request->input('notes_' . $data->symbol);
+        }
+        $nameArr = json_encode($names);
+        $tittleArr = json_encode($tittles);
+        //Insert
+        $item = new Contractor();
+        $item->name = $nameArr;
+        $item->notes = $tittleArr;
+        $item->save();
         //
+        return redirect()->action('Admin\ContractorController@index');
     }
 
     /**
@@ -68,7 +86,11 @@ class ContractorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editData = Contractor::find($id);
+        $nameArr = json_decode($editData->name, true);
+        $notesArr = json_decode($editData->notes, true);
+        $allLang = Language::all();
+        return view('admin.contractor.edit')->with(['editData' => $editData, 'nameArr' => $nameArr , 'notesArr' => $notesArr , 'allLang' => $allLang]);
     }
 
     /**
@@ -80,7 +102,24 @@ class ContractorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name_ar' => 'required',
+        ]);
+        $allLang = Language::all();
+        foreach ($allLang as $data) {
+
+            $names[$data->symbol] = $request->input('name_' . $data->symbol);
+            $tittles[$data->symbol] = $request->input('notes_' . $data->symbol);
+        }
+        $nameArr = json_encode($names);
+        $tittleArr = json_encode($tittles);
+        //update
+        $item =  Contractor::find($id);
+        $item->name = $nameArr;
+        $item->notes = $tittleArr;
+        $item->save();
         //
+        return redirect()->action('Admin\ContractorController@index');
     }
 
     /**
@@ -89,8 +128,9 @@ class ContractorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delContractor($id)
     {
-        //
+        Contractor::where('id' , $id)->delete();
+        return redirect()->action('Admin\ContractorController@index');
     }
 }

@@ -44,6 +44,7 @@ foreach ($allWords as $data) {
         'Password' => 'Password',
         'Phone' => 'Phone',
         'Icon' => 'Icon',
+        'Action' => 'Action',
         //
         'Categories' => 'Projects Categories',
         'Site' => 'Site',
@@ -59,6 +60,8 @@ foreach ($allWords as $data) {
         'Accura Group' => 'Accura Group',
         'Notes' => 'Notes',
         'Contractor' => 'Contractor',
+        'Supervisor' => 'Supervisor',
+        'Beneficiaries' => 'Beneficiaries',
 
 
         $data->wordKey => $data->name_en

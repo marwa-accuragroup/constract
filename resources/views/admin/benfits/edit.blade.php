@@ -1,21 +1,21 @@
 @extends('layouts.app')
 @section('content')
 
-        <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-            <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.Contractor') </h3>
-            <div class="row breadcrumbs-top d-inline-block">
-                <div class="breadcrumb-wrapper col-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ URL :: to ('/admin/home')}}">@lang('admin.Home') </a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="#">@lang('admin.Contractor')</a>
-                        </li>
-                        <li class="breadcrumb-item active"> @lang('admin.Add new item')
-                        </li>
-                    </ol>
-                </div>
+    <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+        <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.Beneficiaries') </h3>
+        <div class="row breadcrumbs-top d-inline-block">
+            <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ URL :: to ('/admin/home')}}">@lang('admin.Home') </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#">@lang('admin.Beneficiaries')</a>
+                    </li>
+                    <li class="breadcrumb-item active"> @lang('admin.Edit item')
+                    </li>
+                </ol>
             </div>
         </div>
+    </div>
 
 
     <section id="tabs-with-icons">
@@ -23,7 +23,7 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="form-section"><i class="la la-plus-circle"></i> @lang('admin.Add new item')</h4>
+                        <h4 class="form-section"><i class="la la-plus-circle"></i> @lang('admin.Edit item')</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
@@ -54,15 +54,14 @@
                             </ul>
                             <div class="tab-content px-1 pt-1">
                                 <form class="form" role="form" enctype="multipart/form-data" method="post"
-                                      action="{{ action('Admin\ContractorController@store') }}">
+                                      action="{{ action('Admin\BeneficiariesController@update' , $editData->id) }}">
                                     {{ csrf_field() }}
+                                    {{ method_field('PATCH') }}
                                     @foreach($allLang as $data)
                                         <div role="tabpanel" class="tab-pane " id="tabIcon1_{{ $data->symbol }}"
                                              aria-expanded="true" aria-labelledby="baseIcon-tab1">
 
                                             <!---===========================Tab Body===========================--->
-
-
                                             <div class="form-group last">
                                                 <label class="control-label col-md-3">  @lang('admin.Name')
 
@@ -71,7 +70,7 @@
 
                                                     <input type="text" class="form-control"
                                                            name="name_{{$data->symbol}}"
-                                                           value="{{ old('name_'.$data->symbol) }}">
+                                                           value="{{ $nameArr['ar'] }}">
 
                                                 </div>
                                             </div>
@@ -83,8 +82,8 @@
                                                 </label>
                                                 <div class="col-md-9">
 
-                                            <textarea type="text" class="form-control" name="notes_{{$data->symbol}}"
-                                            ></textarea>
+                                            <textarea type="text" class="form-control" name="notes_{{$data->symbol}}" >
+                                                {{ $notesArr['ar'] }}</textarea>
 
 
                                                 </div>

@@ -44,6 +44,7 @@ foreach ($allWords as $data) {
         'Password' => 'كلمه المرور',
         'Phone' => 'رقم الهاتف',
         'Icon' => 'الايقونه',
+        'Action' => 'العمليات',
         //
         'Categories' => 'اقسام المشروعات',
         'Site' => 'المواقع',
@@ -59,6 +60,8 @@ foreach ($allWords as $data) {
         'Accura Group' => 'اكيورا جروب',
         'Notes' => 'ملاحظات',
         'Contractor' => 'المقاولين',
+        'Supervisor' => 'الجهات المشرفه',
+        'Beneficiaries' => 'الجهات المستفيده',
 
 
 

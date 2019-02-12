@@ -57,9 +57,15 @@ Route::group(['middleware' => ['auth', 'locale'  ], 'prefix' => 'admin', 'namesp
     /*Site=======*/
     Route::resource('site', 'SiteController');
     Route::get('/delSite/{id}', 'SiteController@delSite');
-    /*Site=======*/
+    /*contractor=======*/
     Route::resource('contractor', 'ContractorController');
     Route::get('/delContractor/{id}', 'ContractorController@delContractor');
+    /*Supervisor=======*/
+    Route::resource('supervisor', 'SupervisorsController');
+    Route::get('/delSupervisor/{id}', 'SupervisorsController@delSupervisor');
+    /*Beneficiaries=======*/
+    Route::resource('beneficiaries', 'BeneficiariesController');
+    Route::get('/delBeneficiaries/{id}', 'BeneficiariesController@delBeneficiaries');
 
 
 

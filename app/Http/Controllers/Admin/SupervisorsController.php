@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Lang;
 use Auth;
 use App\Language;
-use App\Site;
+use App\Supervisors;
 
-class SiteController extends Controller
+class SupervisorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +18,13 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $allData = Site::all();
+        $allData = Supervisors::all();
         foreach ($allData as $data) {
             $nameArr = json_decode($data->name, true);
             $data->name = $nameArr['ar'];
 
         }
-        return view('admin.site.index')->with(['allData' => $allData ]);
+        return view('admin.supervisor.index')->with(['allData' => $allData ]);
     }
 
     /**
@@ -35,7 +35,7 @@ class SiteController extends Controller
     public function create()
     {
         $allLang = Language::all();
-        return view('admin.site.create')->with(['allLang' => $allLang]);
+        return view('admin.supervisor.create')->with(['allLang' => $allLang]);
     }
 
     /**
@@ -58,12 +58,12 @@ class SiteController extends Controller
         $nameArr = json_encode($names);
         $tittleArr = json_encode($tittles);
         //Insert
-        $item = new Site();
+        $item = new Supervisors();
         $item->name = $nameArr;
         $item->notes = $tittleArr;
         $item->save();
         //
-        return redirect()->action('Admin\SiteController@index');
+        return redirect()->action('Admin\SupervisorsController@index');
     }
 
     /**
@@ -85,13 +85,12 @@ class SiteController extends Controller
      */
     public function edit($id)
     {
-        $editData = Site::find($id);
+        $editData = Supervisors::find($id);
         $nameArr = json_decode($editData->name, true);
         $notesArr = json_decode($editData->notes, true);
         $allLang = Language::all();
-        return view('admin.site.edit')->with(['editData' => $editData, 'nameArr' => $nameArr , 'notesArr' => $notesArr , 'allLang' => $allLang]);
+        return view('admin.supervisor.edit')->with(['editData' => $editData, 'nameArr' => $nameArr , 'notesArr' => $notesArr , 'allLang' => $allLang]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -113,12 +112,12 @@ class SiteController extends Controller
         $nameArr = json_encode($names);
         $tittleArr = json_encode($tittles);
         //update
-        $item =  Site::find($id);
+        $item =  Supervisors::find($id);
         $item->name = $nameArr;
         $item->notes = $tittleArr;
         $item->save();
         //
-        return redirect()->action('Admin\SiteController@index');
+        return redirect()->action('Admin\SupervisorsController@index');
     }
 
     /**
@@ -127,9 +126,9 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delSite($id)
+    public function delSupervisor($id)
     {
-        Site::where('id' , $id)->delete();
-        return redirect()->action('Admin\SiteController@index');
+        Supervisors::where('id' , $id)->delete();
+        return redirect()->action('Admin\SupervisorsController@index');
     }
 }

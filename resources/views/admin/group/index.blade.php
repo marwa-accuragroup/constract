@@ -60,8 +60,7 @@
                                             #
                                         </th>
                                         <th> @lang('admin.Name')  </th>
-                                        <th> @lang('admin.Edit') </th>
-                                        <th> @lang('admin.Delete') </th>
+                                        <th> @lang('admin.Action') </th>
 
                                     </tr>
                                     </thead>
@@ -77,17 +76,15 @@
                                                 <a href="{{ action('Admin\UsergroupsController@edit' ,  $data->id) }}"
                                                    class="btn sbold blue ">
                                                     <i class="ft-edit"></i> </a>
-
-                                            </td>
-
-                                            <td>
                                                 @if($data->id == 1)
                                                 @else
                                                     <a href="{{ action('Admin\UsergroupsController@delgroup' , $data->id) }}"
                                                        class="btn sbold red ">
                                                         <i class="ft-trash-2"></i> </a>
                                                 @endif
+
                                             </td>
+
 
                                         </tr>
                                     @endforeach

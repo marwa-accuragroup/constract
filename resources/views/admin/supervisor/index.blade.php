@@ -4,13 +4,13 @@
 
     <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-            <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.Categories') </h3>
+            <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.Supervisor') </h3>
             <div class="row breadcrumbs-top d-inline-block">
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ URL :: to ('/admin/home')}}">@lang('admin.Home') </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#">@lang('admin.Categories')</a>
+                        <li class="breadcrumb-item"><a href="#">@lang('admin.Supervisor')</a>
                         </li>
                         <li class="breadcrumb-item active"> @lang('admin.Show Data')
                         </li>
@@ -23,7 +23,7 @@
         <div class="content-header-right col-md-6 col-12">
             <div class="dropdown float-md-right">
                 <div class="heading-elements">
-                    <a href="{{ action('Admin\CateoryController@create') }}"
+                    <a href="{{ action('Admin\SupervisorsController@create') }}"
                        class="btn btn-primary box-shadow-1  btn-min-width ml-1 mr-1">
                         @lang('admin.Add new item')
                     </a>
@@ -54,49 +54,43 @@
                         <div class="card-content collapse show">
                             <div class="card-body card-dashboard">
                                 <table class="table table-striped table-bordered dataex-key-basic">
-                                    <thead>
-                                    <tr>
-                                        <th>
-                                            #
-                                        </th>
-                                        <th> @lang('admin.Name')  </th>
-                                        <th> @lang('admin.Action') </th>
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th> @lang('admin.Name')  </th>
+                            <th> @lang('admin.Action') </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($allData as $data)
+                        <tr class="odd gradeX">
+                            <td>
+                                #
+                            </td>
+                            <td> {{ $data->name }} </td>
 
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($category as $data)
-                                        <tr class="odd gradeX">
-                                            <td>
-                                                #
-                                            </td>
-                                            <td> {{ $data->name }} </td>
+                            <td>
+                                <a href="{{ action('Admin\SupervisorsController@edit' ,  $data->id) }}" class="btn sbold blue ">
+                                    <i class="ft-edit"></i> </a>
+                                <a href="{{ action('Admin\SupervisorsController@delSupervisor' , $data->id) }}" class="btn sbold red ">
+                                    <i class="ft-trash-2"></i> </a>
 
-                                            <td>
-                                                <a href="{{ action('Admin\CateoryController@edit' ,  $data->id) }}"
-                                                   class="btn sbold blue ">
-                                                    <i class="ft-edit"></i> </a>
-                                                <a href="{{ action('Admin\CateoryController@deleteCat' , $data->id) }}"
-                                                   class="btn sbold red ">
-                                                    <i class="ft-trash-2"></i> </a>
+                            </td>
+                        </tr>
+                        @endforeach
 
-                                            </td>
-
-
-                                        </tr>
-                                    @endforeach
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!-- END EXAMPLE TABLE PORTLET-->
-                    </div>
-                </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
             </div>
         </section>
     </div>
-
 
 
 

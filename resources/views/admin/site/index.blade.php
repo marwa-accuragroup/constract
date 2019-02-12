@@ -60,8 +60,7 @@
                                 #
                             </th>
                             <th> @lang('admin.Name')  </th>
-                            <th> @lang('admin.Edit') </th>
-                            <th> @lang('admin.Delete') </th>
+                            <th> @lang('admin.Action') </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,16 +74,8 @@
                             <td>
                                 <a href="{{ action('Admin\SiteController@edit' ,  $data->id) }}" class="btn sbold blue ">
                                     <i class="ft-edit"></i> </a>
-
-                            </td>
-
-                            <td>
-                                
-
-                                    <a href="{{ action('Admin\SiteController@delSite' , $data->id) }}" class="btn sbold red ">
-                                        <i class="ft-trash-2"></i> </a>
-                                    
-                                 
+                                <a href="{{ action('Admin\SiteController@delSite' , $data->id) }}" class="btn sbold red ">
+                                    <i class="ft-trash-2"></i> </a>
 
                             </td>
                         </tr>

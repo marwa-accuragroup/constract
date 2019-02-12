@@ -63,8 +63,8 @@
                                         <th> @lang('admin.Name')  </th>
                                         <th> @lang('admin.Email')  </th>
 
-                                        <th> @lang('admin.Edit') </th>
-                                        <th> @lang('admin.Delete') </th>
+                                        <th> @lang('admin.Action') </th>
+
 
                                     </tr>
                                     </thead>
@@ -83,19 +83,18 @@
 
                                             <td>
                                                 <a href="{{ action('Admin\AdminController@edit' ,  $data->id) }}"
-                                                   class="btn sbold blue ">
+                                                   class="btn sbold green ">
                                                     <i class="ft-edit"></i> </a>
 
-                                            </td>
-
-                                            <td>
                                                 @if($data->id == 1)
                                                 @else
                                                     <a href="{{ action('Admin\AdminController@delAdmin' , $data->id) }}"
                                                        class="btn sbold red ">
                                                         <i class="ft-trash-2"></i> </a>
                                                 @endif
+
                                             </td>
+
 
                                         </tr>
                                     @endforeach

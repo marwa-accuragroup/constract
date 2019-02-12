@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Beneficiaries' => $baseDir . '/app/Beneficiaries.php',
     'App\\Cateory' => $baseDir . '/app/Cateory.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\ContactUs' => $baseDir . '/app/ContactUs.php',
@@ -14,10 +15,12 @@ return array(
     'App\\Helpers\\Helper' => $baseDir . '/app/Helpers/Helper.php',
     'App\\Http\\Controllers\\Admin\\AdminController' => $baseDir . '/app/Http/Controllers/Admin/AdminController.php',
     'App\\Http\\Controllers\\Admin\\CateoryController' => $baseDir . '/app/Http/Controllers/Admin/CateoryController.php',
+    'App\\Http\\Controllers\\Admin\\ContractorController' => $baseDir . '/app/Http/Controllers/Admin/ContractorController.php',
     'App\\Http\\Controllers\\Admin\\HomeController' => $baseDir . '/app/Http/Controllers/Admin/HomeController.php',
     'App\\Http\\Controllers\\Admin\\LanguageController' => $baseDir . '/app/Http/Controllers/Admin/LanguageController.php',
     'App\\Http\\Controllers\\Admin\\MenuController' => $baseDir . '/app/Http/Controllers/Admin/MenuController.php',
     'App\\Http\\Controllers\\Admin\\SiteController' => $baseDir . '/app/Http/Controllers/Admin/SiteController.php',
+    'App\\Http\\Controllers\\Admin\\SupervisorsController' => $baseDir . '/app/Http/Controllers/Admin/SupervisorsController.php',
     'App\\Http\\Controllers\\Admin\\TranslateController' => $baseDir . '/app/Http/Controllers/Admin/TranslateController.php',
     'App\\Http\\Controllers\\Admin\\UsergroupsController' => $baseDir . '/app/Http/Controllers/Admin/UsergroupsController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -44,6 +47,7 @@ return array(
     'App\\Providers\\HelperServiceProvider' => $baseDir . '/app/Providers/HelperServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Site' => $baseDir . '/app/Site.php',
+    'App\\Supervisors' => $baseDir . '/app/Supervisors.php',
     'App\\Translate' => $baseDir . '/app/Translate.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\UserController' => $baseDir . '/app/UserController.php',
