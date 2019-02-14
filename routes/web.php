@@ -21,11 +21,13 @@ Route::get('/', function () {
     }
 });
 
-/*Auth=======,'permission'*/
+/*Auth=======*/
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::group(['middleware' => ['auth', 'locale'  ], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+
+//for permission ,'permission'
+Route::group(['middleware' => ['auth', 'locale' ], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     //
     Route::get('/home', 'HomeController@index')->name('home');
@@ -47,6 +49,11 @@ Route::group(['middleware' => ['auth', 'locale'  ], 'prefix' => 'admin', 'namesp
 
     Route::any('/error', 'HomeController@error');
 
+    /*ProjectCat=======*/
+    Route::resource('projectCat', 'ProjectCatController');
+    /*Projects=======*/
+    Route::resource('project', 'ProjectController');
+    Route::get('projectInCat/{id}', 'ProjectController@projectInCat');
 
 
 

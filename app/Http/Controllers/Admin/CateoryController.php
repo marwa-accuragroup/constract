@@ -24,11 +24,6 @@ class CateoryController extends Controller
         if (Auth::user()) {
             //
             $category = Cateory::all();
-            foreach ($category as $data) {
-                $nameArr = json_decode($data->name, true);
-                $data->name = $nameArr['ar'];
-
-            }
             return view('admin.category.index')->with('category', $category);
         } else {
             return redirect()->route('login');
@@ -46,11 +41,6 @@ class CateoryController extends Controller
         if (Auth::user()) {
             $allLang = Language::all();
             $category = Cateory::all();
-            foreach ($category as $data) {
-                $nameArr = json_decode($data->name, true);
-                $data->name = $nameArr[Lang::getLocale()];
-
-            }
             return view('admin.category.create')->with(['allLang' => $allLang, 'category' => $category]);
         } else {
             return redirect()->route('login');
@@ -67,29 +57,15 @@ class CateoryController extends Controller
     {
         //
         $this->validate($request, [
-            'name_ar' => 'required',
+            'name' => 'required',
             'icon' => 'required',
         ]);
-        $allLang = Language::all();
-        foreach ($allLang as $data) {
 
-            $names[$data->symbol] = $request->input('name_' . $data->symbol);
-            $tittles[$data->symbol] = $request->input('tittle_' . $data->symbol);
-            $contents[$data->symbol] = $request->input('content_' . $data->symbol);
-        }
-        // dd($names);
-        $nameArr = json_encode($names);
-        // dd($nameArr);
-        $tittleArr = json_encode($tittles);
-        $contentsArr = json_encode($contents);
         //Insert
         $main = new Cateory();
-        $main->imageName = '';
         $main->icon = $request->input('icon');
-        $main->name = $nameArr;
-        $main->tittle = $tittleArr;
-        $main->content = $contentsArr;
-        $main->inHome = $request->inHome;
+        $main->name = $request->input('name');
+        $main->name_en = $request->input('name_en');
         $main->save();
         //
         return redirect()->action('Admin\CateoryController@index');
@@ -117,8 +93,7 @@ class CateoryController extends Controller
     {
 
         $main = Cateory::find($id);
-        $nameArr = json_decode($main->name, true);
-        return view('admin.category.edit')->with(['main' => $main, 'nameArr' => $nameArr]);
+        return view('admin.category.edit')->with(['main' => $main]);
 
     }
 
@@ -133,23 +108,12 @@ class CateoryController extends Controller
     {
 
 
-        $allLang = Language::all();
-        foreach ($allLang as $data) {
-            $names[$data->symbol] = $request->input('name_' . $data->symbol);
-            $tittles[$data->symbol] = $request->input('tittle_' . $data->symbol);
-            $contents[$data->symbol] = $request->input('content_' . $data->symbol);
-        }
-        $nameArr = json_encode($names);
-        $tittleArr = json_encode($tittles);
-        $contentsArr = json_encode($contents);
         //Insert
         $main = Cateory::find($id);
         $main->imageName = '';
         $main->icon = $request->input('icon');
-        $main->name = $nameArr;
-        $main->tittle = $tittleArr;
-        $main->content = $contentsArr;
-        $main->inHome = '';
+        $main->name = $request->input('name');
+        $main->name_en = $request->input('name_en');
         $main->save();
         //
         return redirect()->action('Admin\CateoryController@index');

@@ -23,10 +23,10 @@
         <div class="content-header-right col-md-6 col-12">
             <div class="dropdown float-md-right">
                 <div class="heading-elements">
-                    <a href="{{ action('Admin\TranslateController@create') }}"
+                    <!--a href="{{ action('Admin\TranslateController@create') }}"
                        class="btn btn-primary box-shadow-1  btn-min-width ml-1 mr-1">
                         @lang('admin.Add new item')
-                    </a>
+                    </a-->
                 </div>
 
 
@@ -56,9 +56,9 @@
                         <table class="table table-striped table-bordered table-advance table-hover">
                             <thead>
                             <tr>
-                                <th>
+                                <!--th>
                                     <i class="fa fa-language"></i> @lang('admin.Word')
-                                </th>
+                                </th-->
                                 <th class="hidden-xs">
                                     <i class="fa fa-language"></i>  @lang('admin.Arabic Translation')
                                 </th>
@@ -79,7 +79,7 @@
 
                             <tr>
                                 <input type="hidden" value="{{$data->id}}" name="id[]"/>
-                                <td> {{ $data->wordKey }}</td>
+                                <!--td> {{ $data->wordKey }}</td-->
                                 <td> <input type="text" class="form-control" name="name_ar[]" value="{{$data->name_ar}}"> </td>
                                 <td> <input type="text" class="form-control" name="name_en[]" value="{{$data->name_en}}"></td>
                             </tr>

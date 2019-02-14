@@ -76,9 +76,9 @@
                                                 <a href="{{ action('Admin\CateoryController@edit' ,  $data->id) }}"
                                                    class="btn sbold blue ">
                                                     <i class="ft-edit"></i> </a>
-                                                <a href="{{ action('Admin\CateoryController@deleteCat' , $data->id) }}"
+                                                <!--a href="{{ action('Admin\CateoryController@deleteCat' , $data->id) }}"
                                                    class="btn sbold red ">
-                                                    <i class="ft-trash-2"></i> </a>
+                                                    <i class="ft-trash-2"></i> </a-->
 
                                             </td>
 

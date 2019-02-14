@@ -43,13 +43,26 @@
 
 
                             <div class="form-group last">
-                                <label class="control-label col-md-3">  @lang('admin.Name')
+                                <label class="control-label col-md-3">  @lang('admin.Name') (@lang('admin.Arabic'))
 
                                 </label>
                                 <div class="col-md-9">
 
-                                    <input type="text" class="form-control" name="name_ar"
-                                           value="{{ old('name_ar') }}">
+                                    <input type="text" class="form-control" name="name"
+                                           value="{{ old('name') }}">
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group last">
+                                <label class="control-label col-md-3">  @lang('admin.Name')(@lang('admin.English'))
+
+                                </label>
+                                <div class="col-md-9">
+
+                                    <input type="text" class="form-control" name="name_en"
+                                           value="{{ old('name_en') }}">
 
                                 </div>
                             </div>

@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        /*if ($exception instanceof PDOException) {
+       /* if ($exception instanceof PDOException) {
 
             return view('error.custom');
         } elseif ($exception instanceof ModelNotFoundException) {
@@ -68,6 +68,6 @@ class Handler extends ExceptionHandler
 
             return parent::render($request, $exception);
         }*/
-         return parent::render($request, $exception);
+        return parent::render($request, $exception);
     }
 }

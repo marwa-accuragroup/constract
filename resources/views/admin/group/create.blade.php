@@ -1,5 +1,22 @@
 @extends('layouts.app')
 @section('content')
+
+    <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.User groups') </h3>
+    <div class="row breadcrumbs-top d-inline-block">
+        <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ URL :: to ('/admin/home')}}">@lang('admin.Home') </a>
+                </li>
+                <li class="breadcrumb-item"><a href="#">@lang('admin.User groups')</a>
+                </li>
+                <li class="breadcrumb-item active"> @lang('admin.Add new item')
+                </li>
+            </ol>
+        </div>
+    </div>
+    </div>
+
+
     <!-- BEGIN SAMPLE FORM PORTLET-->
     <div class="card ">
 

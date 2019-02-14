@@ -62,6 +62,7 @@ foreach ($allWords as $data) {
         'Contractor' => 'Contractor',
         'Supervisor' => 'Supervisor',
         'Beneficiaries' => 'Beneficiaries',
+        'Projects' => 'Projects',
 
 
         $data->wordKey => $data->name_en

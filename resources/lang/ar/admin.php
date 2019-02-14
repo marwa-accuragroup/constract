@@ -62,6 +62,7 @@ foreach ($allWords as $data) {
         'Contractor' => 'المقاولين',
         'Supervisor' => 'الجهات المشرفه',
         'Beneficiaries' => 'الجهات المستفيده',
+        'Projects' => 'المشاريع',
 
 
 

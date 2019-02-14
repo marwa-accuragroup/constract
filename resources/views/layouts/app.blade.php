@@ -1,4 +1,4 @@
-<?php $locale = App::getLocale();?>
+<?php $locale = App::getLocale(); ?>
         <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="rtl">
 <head>
@@ -24,6 +24,8 @@
     @else
         <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css/vendors.css')}}">
     @endif
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/pickers/daterange/daterangepicker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
 
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/datatable/datatables.min.css"')}}>
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/datatable/select.dataTables.min.css')}}">
@@ -43,7 +45,9 @@
     @endif
 <!-- END MODERN CSS-->
     <!-- BEGIN Page Level CSS-->
-    @if($locale == 'ar')
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/plugins/pickers/daterange/daterange.css')}}">
+
+@if($locale == 'ar')
         <link rel="stylesheet" type="text/css"
               href="{{ URL ::to ('assets/admin/app-assets/css-rtl/core/menu/menu-types/vertical-menu-modern.css')}}">
         <link rel="stylesheet" type="text/css"
@@ -185,6 +189,24 @@
             @endforeach
 
 
+            <?php  $projectCat = \App\Cateory::all();?>
+            @foreach($projectCat as $cat)
+                <li class=" nav-item ">
+                    <a href="{{ action('Admin\ProjectController@projectInCat' , $cat->id) }}">
+                        <i class="{{ $cat->icon }}"></i>
+
+                        @if($locale == 'ar')
+                        <span class="menu-title" data-i18n="nav.dash.main">
+                            {{ $cat->name }} </span>
+                            @else
+                            <span class="menu-title" data-i18n="nav.dash.main">
+                            {{ $cat->name_en }} </span>
+                        @endif
+                    </a>
+                </li>
+            @endforeach
+
+
         </ul>
     </div>
 </div>
@@ -214,6 +236,16 @@
 <script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
 <!-- BEGIN VENDOR JS-->
 <!-- BEGIN PAGE VENDOR JS-->
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/pickadate/picker.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/pickadate/picker.time.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/pickadate/legacy.js')}}" type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/dateTime/moment-with-locales.min.js')}}"
+        type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/daterange/daterangepicker.js')}}"
+        type="text/javascript"></script>
+
+
 <script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/tables/datatable/datatables.min.js')}}" type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/tables/datatable/dataTables.fixedHeader.min.js')}}"
         type="text/javascript"></script>
@@ -235,10 +267,14 @@
 <script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script>
 <!-- END MODERN JS-->
 <!-- BEGIN PAGE LEVEL JS-->
+<script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js')}}"  type="text/javascript"></script>
+
 <!--script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/pages/dashboard-sales.js')}}"
         type="text/javascript"></script-->
 <script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/tables/datatables-extensions/datatable-keytable.js')}}"
         type="text/javascript"></script>
 <!-- END PAGE LEVEL JS-->
+
+<script src="{{ URL ::to ('assets/admin/custom.js')}}" type="text/javascript"></script>
 </body>
 </html>
