@@ -15,10 +15,10 @@ class CreateProjectLogsTable extends Migration
     {
         Schema::create('project_logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id');
-            $table->integer('id');
-            $table->text('id');
-            $table->text('id');
+            $table->integer('projectId');
+            $table->integer('userId');
+            $table->text('controllerName');
+            $table->text('action');
             $table->timestamps();
         });
     }
