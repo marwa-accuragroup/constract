@@ -28,13 +28,16 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 //for permission ,'permission'
 Route::group(['middleware' => ['auth', 'locale' ], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
-
     //
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/changelang/{locale}', 'HomeController@changeLang');
     /*Language=======*/
     Route::resource('language', 'LanguageController');
     Route::get('/destroyLang/{id}', 'LanguageController@destroyLang');
+    /*Setting=======*/
+    Route::any('/setting/{id}/edit', 'SettingController@edit');
+    Route::any('/setting/update/{id}', 'SettingController@update');
+    Route::any('/setting/delItem', 'SettingController@delItem');
     /*Translate=======*/
     Route::resource('translate', 'TranslateController');
     /*User Groups=======*/
@@ -53,7 +56,10 @@ Route::group(['middleware' => ['auth', 'locale' ], 'prefix' => 'admin', 'namespa
     Route::resource('projectCat', 'ProjectCatController');
     /*Projects=======*/
     Route::resource('project', 'ProjectController');
+    Route::get('delProject/{id}', 'ProjectController@delProject');
     Route::get('projectInCat/{id}', 'ProjectController@projectInCat');
+    /*Finished Projects=======*/
+    Route::any('finishedProjects', 'ProjectController@finishedProjects');
 
 
 

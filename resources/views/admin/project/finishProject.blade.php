@@ -3,7 +3,7 @@
 
     <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-            <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.Projects') </h3>
+            <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.Finished Projects') </h3>
             <div class="row breadcrumbs-top d-inline-block">
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
@@ -11,7 +11,7 @@
                         </li>
                         <li class="breadcrumb-item"><a href="#">@lang('admin.Show Data') </a>
                         </li>
-                        <li class="breadcrumb-item active"> @lang('admin.Projects')
+                        <li class="breadcrumb-item active"> @lang('admin.Finished Projects')
                         </li>
                     </ol>
                 </div>
@@ -22,10 +22,6 @@
         <div class="content-header-right col-md-6 col-12">
             <div class="dropdown float-md-right">
                 <div class="heading-elements">
-                    <a href="{{ action('Admin\ProjectController@show' , $catId) }}"
-                       class="btn btn-primary box-shadow-1  btn-min-width ml-1 mr-1">
-                        @lang('admin.Add new item')
-                    </a>
                 </div>
 
 
@@ -61,7 +57,11 @@
                                         </th>
                                         <th> @lang('admin.projectNo')  </th>
                                         <th> @lang('admin.Name')  </th>
-                                        <th> @lang('admin.Action') </th>
+                                        <th> @lang('admin.contractorName')  </th>
+                                        <th> @lang('admin.finalValue')  </th>
+                                        <th> @lang('admin.endDate')  </th>
+                                        <th> @lang('admin.beneficiaries')  </th>
+                                        <th> @lang('admin.Details') </th>
 
                                     </tr>
                                     </thead>
@@ -73,18 +73,14 @@
                                             </td>
                                             <td> {{ $data->projectNo }} </td>
                                             <td> {{ $data->projectName }} </td>
-
+                                            <td> {{ $data->contractorName }} </td>
+                                            <td> {{ $data->finalValue }} </td>
+                                            <td> {{ $data->endDate }} </td>
+                                            <td> {{ $data->Beneficiaries }} </td>
                                             <td>
-                                                <a href="{{ action('Admin\ProjectController@edit' ,  $data->id) }}"
+                                                <a href="#"
                                                    class="btn sbold blue ">
-                                                    <i class="ft-edit"></i> </a>
-
-
-                                                @if(Auth::user()->id == 1)
-                                                <a href="{{ action('Admin\ProjectController@delProject' , $data->id) }}" class="btn sbold red ">
-                                                    <i class="ft-trash-2"></i> </a>
-                                                    @endif
-
+                                                    <i class="ft-eye"></i> </a>
                                             </td>
 
 

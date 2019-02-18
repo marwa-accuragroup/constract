@@ -1,0 +1,412 @@
+/*  Style Reset */
+@import url('https://fonts.googleapis.com/css?family=Tajawal:400,500');
+html, body, label, h1, h2, h3, h4, h5, h6, strong, b, select, .btn {
+  font-family: 'Tajawal', sans-serif;
+  font-weight: normal !important;
+}
+p, a, span, ul, li {
+  font-family: 'Tajawal', sans-serif;
+  font-weight: normal !important;
+}
+.form.validate_form>.form-actions>a.btn {
+  min-height: 45px;
+}
+.badge-btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1;
+  border-radius: 0.21rem;
+}
+.btns-list {
+  text-align: left;
+}
+.rating-score {
+  position: relative;
+  right: 76px;
+  margin-right: -17px;
+}
+.rating-img {
+  width: 15px;
+}
+.title {
+  margin-top: 15px;
+}
+.content-title {
+  margin-top: -43px;
+}
+.bb-0{
+  border-bottom: 0 !important;
+}
+.table tbody + tbody{
+  border-top: 0;
+}
+/* Header */
+
+.header-navbar .navbar-header .navbar-brand .brand-logo {
+  width: 45px;
+}
+body.vertical-layout.vertical-menu-modern .main-menu li a span{
+  font-size: 13px;
+}
+/* edit profile */
+
+.profil-cover-details {
+  margin-top: -79px;
+}
+.media-body-title {
+  padding-top: 5.5rem !important;
+}
+.card-title-style {
+  font-size: 26px !important;
+  position: relative;
+  top: 12px;
+  right: -13px;
+  letter-spacing: 0px;
+}
+.img-border-style {
+  border: 4px solid #fff;
+}
+.navbar-profile-user {
+  margin-top: -10px;
+}
+#Edit-form .form .form-actions {
+  border-top: none;
+  padding: 0px 0;
+  margin-top: 20px;
+}
+.editprofile-button {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin-right: -34px;
+  z-index: 100;
+  position: relative;
+}
+.editprofile-button .btn-file {
+  background-color: #1e9ff2;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+}
+.la-camera-style {
+  color: #FFF;
+}
+/* teacher profile */
+
+#teacher-profile .profil-cover-details {
+  margin-top: -70px;
+}
+.khetta-no-border{
+  border: 0;
+}
+.navbar-profile-teacher .badge {
+  margin-left: 124px;
+}
+.card-title-name {
+  font-size: 21px !important;
+  position: relative;
+  top: -37px;
+  right: -13px;
+  letter-spacing: 0px !important;
+}
+.card-title-subject {
+  font-size: 17px !important;
+  position: relative;
+  top: 3px;
+  right: -7px;
+  letter-spacing: 0px !important;
+}
+.media-body-content {
+  position: relative;
+  right: 150px;
+  top: -40px;
+}
+.media-body-content ul {
+  margin-bottom: -2rem;
+}
+/*teacher list */
+
+.badge-btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1;
+  border-radius: 0.21rem;
+}
+.btns-list {
+  text-align: left;
+}
+la .rating-score {
+  position: relative;
+  right: 76px;
+  margin-right: -17px;
+}
+.rating-img {
+  width: 15px;
+}
+.title {
+  margin-top: 15px;
+}
+.content-title {
+  margin-top: -43px;
+}
+.sidebar-card .content-body .media {
+  padding: 8px 15px;
+}
+/*teacher dashboard */
+.content-form-filter {
+  text-align: left;
+}
+.content-header-title-style {
+  letter-spacing: 0px !important;
+}
+/*direct message*/
+.sidebar-content .font-small-3{
+  position: relative;
+  left: 10px;
+}
+.replay-btn {
+  width: 53px;
+  position: relative;
+  top: -16px;
+}
+.more-btn {
+  width: 140px;
+  margin: 0px auto;
+}
+.media-body-style {
+  position: relative;
+  top: 4px;
+}
+.media-list hr {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.chat-application .app-content, .chat-application .content-left, .chat-application .content-wrapper, .chat-application .content-body {
+  height: 100%;
+}
+.chat-application .chat-app-window {
+	height: -webkit-calc(100% - 81px);
+	height: -moz-calc(100% - 81px);
+	height: calc(100% - 81px);
+}
+/***** Student Home *****/
+.table-daily-plan {
+  background-color: #f7f7f7b3;
+}
+.subject-item {
+	min-width: 100% !important;
+	max-width: 100% !important;
+	max-height: 126px !important;
+}
+/***** Student edit acc *****/
+.form-edit .form-actions {
+    border-top: none;
+    padding: 0px;
+    margin-top: 0px;
+}
+/***** Side Bar *****/
+.badge-btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1;
+  border-radius: 0.21rem;
+}
+.btns-list {
+  text-align: left;
+}
+.rating-score {
+  position: relative;
+  right: 76px;
+  margin-right: -17px;
+}
+.rating-img {
+  width: 15px;
+}
+.title {
+  margin-top: 15px;
+}
+.content-title {
+  margin-top: -43px;
+}
+.sidebar-student-honor .media-list .media {
+    padding: 10px 10px;
+}
+.media-object-image{
+  width: 48px !important;
+  height: 48px !important;
+  object-fit: cover;
+}
+/**** Week Plan ****/
+
+#timeline.timeline-left .timeline-item::before {
+  border-left: 12px solid #2196F3;
+}
+/**** Lesson Page ****/
+
+.list-video-image {
+  width: 90px;
+  height: 60px;
+}
+.ft-lesson-file {
+  font-size: 40px;
+}
+/* Rating Star Widgets Style */
+
+.rating-stars ul {
+  list-style-type: none;
+  padding: 0;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.rating-stars ul>li.star {
+  display: inline-block;
+}
+/* Idle State of the stars */
+
+.rating-stars ul>li.star>i.la {
+  font-size: 2.5em;
+  /* Change the size of the stars */
+  color: #ccc;
+  /* Color on idle state */
+}
+/* Hover state of the stars */
+
+.rating-stars ul>li.star.hover>i.la {
+  color: #FFCC36;
+}
+/* Selected state of the stars */
+
+.rating-stars ul>li.star.selected>i.la {
+  color: #FF912C;
+}
+/* Lesson Questiona */
+#timeline.timeline-question .timeline-item::before {
+	border-left: 12px solid #FFF;
+}
+.lesson-question-img{
+  width: auto;
+  height: 200px;
+}
+/**** Video Page ****/
+.search-btn-div
+{
+  margin-top: 10px;
+    width: 100%;
+}
+body.vertical-layout.vertical-menu-modern.menu-expanded .main-menu .navigation li.has-sub > a:not(.mm-next):after {
+    content: "\f111";
+}
+/* Modal of gallery */
+#summary_modal_content img{
+
+}
+
+/*typeahead autocomplete liberary*/
+.typeahead{
+  margin: 0 auto;
+}
+.typeahead {border-radius: 4px;padding: 8px 12px;max-width: 600px;min-width: 290px;}
+.tt-menu { width:300px; }
+ul.typeahead{margin:-15px 75px;padding:10px 0px;}
+ul.typeahead.dropdown-menu li a {padding: 10px !important;	border-bottom:#CCC 1px solid;color:#1E9FF2;}
+ul.typeahead.dropdown-menu li:last-child a { border-bottom:0px !important; }
+.bgcolor {max-width: 550px;min-width: 290px;max-height:340px;
+  /*background:url("world-contries.jpg") no-repeat center center;*/
+  padding: 100px 10px 130px;border-radius:4px;text-align:center;margin:10px;}
+.demo-label {font-size:1.5em;color: #686868;font-weight: 500;color:#FFF ;}
+.dropdown-menu{
+  position: relative;
+}
+ .typeahead>.active>a:hover {
+  text-decoration: none;
+  background-color: #1E9FF2 ;
+   color: white;
+  outline: 0;
+}
+/*lessons evaluation help tip*/
+.help-tip{
+  display: inline-block;
+  padding-top: 1px;
+  text-align: center;
+  background-color: #455a64;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 26px;
+  cursor: default;
+}
+
+.help-tip:before{
+  content:'?';
+  font-weight: bold;
+  color:#fff;
+}
+
+.help-tip:hover p{
+  display:block;
+  transform-origin: 100% 0%;
+
+  -webkit-animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
+
+}
+
+.help-tip p{    /* The tooltip */
+  display: none;
+  text-align: left;
+  background-color: #1E2021;
+  padding: 20px;
+  width: 300px;
+  position: absolute;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  right: -4px;
+  color: #FFF;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.help-tip p:before{ /* The pointer of the tooltip */
+  position: absolute;
+  content: '';
+  width:0;
+  height: 0;
+  border:6px solid transparent;
+  border-bottom-color:#1E2021;
+  right:10px;
+  top:-12px;
+}
+
+.help-tip p:after{ /* Prevents the tooltip from being hidden */
+  width:100%;
+  height:40px;
+  content:'';
+  position: absolute;
+  top:-40px;
+  left:0;
+}
+
+/* CSS animation */
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity:0;
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity:100%;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity:0; }
+  100% { opacity:100%; }
+}

@@ -5,6 +5,7 @@ use App\Translate;
 $allWords = Translate::all();
 foreach ($allWords as $data) {
 
+
     return [
 
         /*
@@ -17,6 +18,9 @@ foreach ($allWords as $data) {
    | these language lines according to your application's requirements.
    |
    */
+        $data->wordKey => $data->name_en,
+
+
         'Change Language' => 'Change Language',
         'Arabic' => 'Arabic',
         'English' => 'English',
@@ -63,9 +67,23 @@ foreach ($allWords as $data) {
         'Supervisor' => 'Supervisor',
         'Beneficiaries' => 'Beneficiaries',
         'Projects' => 'Projects',
+        'Yes' => 'Yes',
+        'No' => 'No',
+        'Project extensions' => 'Project extensions',
+        'Official project papers' => 'Official project papers',
+        'Maps and charts' => 'Maps and charts',
+        'Scope of work' => 'Scope of work',
+        'Electrical files' => 'Electrical files',
+        'Choose' => 'Choose',
+        'Finished Projects' => 'Finished Projects',
+        'Details' => 'Details',
+
+        'Logo' => 'logo',
+        'Site Name' => 'Site Name',
+        'Setting' => 'Setting',
 
 
-        $data->wordKey => $data->name_en
+
 
     ];
 }

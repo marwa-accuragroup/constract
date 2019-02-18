@@ -2,6 +2,8 @@
         <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="rtl">
 <head>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -13,7 +15,7 @@
     <title>  {{ __('admin.Cpanel') }} </title>
     <link rel="apple-touch-icon" href="{{ URL ::to ('assets/admin/app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon"
-          href="{{ URL ::to ('assets/admin/app-assets/images/ico/favicon.ico')}}">
+          href="{{ URL ::to ('assets/admin/app-assets/images/ico/favicon.png')}}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
           rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
@@ -27,11 +29,12 @@
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/pickers/daterange/daterangepicker.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/datatable/datatables.min.css"')}}>
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/datatable/select.dataTables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/extensions/keyTable.dataTables.min.css')}}">
 
-
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/js/gallery/photo-swipe/photoswipe.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/js/gallery/photo-swipe/default-skin/default-skin.css')}}">
 
 
     <!-- END VENDOR CSS-->
@@ -79,6 +82,11 @@
         <!-- BEGIN Custom CSS-->
         <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/assets/css/style.css')}}">
     @endif
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css-rtl/pages/gallery.css')}}">
+
+
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/mine.css')}}">
+
 </head>
 <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar"
       data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
@@ -93,7 +101,7 @@
                 <li class="nav-item mr-auto">
                     <a class="navbar-brand" href="#">
                         <img class="brand-logo" alt="modern admin logo"
-                             src="{{ URL ::to ('assets/admin/app-assets/images/logo/logo.png')}}">
+                             src="{{ URL ::to ('assets/admin/app-assets/images/ico/favicon.png')}}">
                         <h3 class="brand-text"> {{ __('admin.Cpanel') }} </h3>
                     </a>
                 </li>
@@ -236,6 +244,13 @@
 <script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
 <!-- BEGIN VENDOR JS-->
 <!-- BEGIN PAGE VENDOR JS-->
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/gallery/masonry/masonry.pkgd.min.js')}}"
+        type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/gallery/photo-swipe/photoswipe.min.js')}}"
+        type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/gallery/photo-swipe/photoswipe-ui-default.min.js')}}"
+        type="text/javascript"></script>
+
 <script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/pickadate/picker.js')}}" type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}" type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/pickadate/picker.time.js')}}" type="text/javascript"></script>
@@ -269,10 +284,13 @@
 <!-- BEGIN PAGE LEVEL JS-->
 <script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js')}}"  type="text/javascript"></script>
 
-<!--script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/pages/dashboard-sales.js')}}"
-        type="text/javascript"></script-->
+<script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/pages/dashboard-sales.js')}}"
+        type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/tables/datatables-extensions/datatable-keytable.js')}}"
         type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/gallery/photo-swipe/photoswipe-script.js')}}"
+        type="text/javascript"></script>
+
 <!-- END PAGE LEVEL JS-->
 
 <script src="{{ URL ::to ('assets/admin/custom.js')}}" type="text/javascript"></script>

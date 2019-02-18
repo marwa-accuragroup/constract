@@ -18,12 +18,10 @@ $(document).ready(function (e) {
     });
 
     $(document).on('click', '.removeItemEdit', function () {
-
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         var id = $(this).attr('data-id');
         var url = $(this).attr('data-url');
         var tableName = $(this).attr('data-tableName');
-        // alert(url);
         $.post(url, {tableName: tableName, id: id, _token: CSRF_TOKEN}, function (data) {
             location.reload();
         });
@@ -41,6 +39,15 @@ $(document).ready(function (e) {
        // alert(itr);
         $(".itemContiner"+itr).append('<tr>'
             + '<td><input type="text" class="form-control" name="'+name+'[]" ></td>'
+            + '<td><a class="btn sbold red  removeItem">  <i class="ft-trash-2"></i></a></td> </tr>');
+
+    });
+
+    /*================================*/
+    $('.addImg').click(function () {
+        var name = $(this).attr('data-name');
+        $("#imgContiner_"+name).append('<tr>'
+            + '<td><input type="file"  name="'+name+'[]" ></td>'
             + '<td><a class="btn sbold red  removeItem">  <i class="ft-trash-2"></i></a></td> </tr>');
 
     });
