@@ -172,11 +172,11 @@
                                                        aria-controls="tab23" href="#tab23"
                                                        aria-expanded="false">  @lang('admin.Scope of work')</a>
                                                 </li>
-                                                <li class="nav-item">
+                                                <!--li class="nav-item">
                                                     <a class="nav-link" id="base-tab23" data-toggle="tab"
                                                        aria-controls="tab24" href="#tab24"
                                                        aria-expanded="false">  @lang('admin.Electrical files')</a>
-                                                </li>
+                                                </li-->
                                             </ul>
                                             <div class="tab-content px-1 pt-1 border-grey border-lighten-2 border-0-top">
 

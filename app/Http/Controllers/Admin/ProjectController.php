@@ -17,6 +17,7 @@ use App\Beneficiaries;
 use App\Projects;
 use App\ProjectDetails;
 use App\Contractor;
+use App\ProjectLog;
 
 class ProjectController extends Controller
 {
@@ -213,8 +214,15 @@ class ProjectController extends Controller
                 $subItem->save();
             }
         }
+        /*===Project Log ================================*/
+        $projectLog = new ProjectLog();
+        $projectLog->projectId = $projectId;
+        $projectLog->userId = Auth::user()->id;
+        $projectLog->controllerName = 'ProjectController';
+        $projectLog->action = 'اضافه مشروع جديد';
+        $projectLog->save();
 
-
+        //
         $catId = $request->input('projectCategory');
         return redirect()->action('Admin\ProjectController@projectInCat' , $catId);
 
@@ -425,7 +433,7 @@ class ProjectController extends Controller
 
 
         /*Tabs Data*********************************************/
-      /*  if ($request->hasFile('paper')) {
+        if ($request->hasFile('paper')) {
             $files = $request->file('paper');
             foreach ($files as $file) {
                 $subItem = new ProjectDetails();
@@ -487,9 +495,17 @@ class ProjectController extends Controller
             }
         }
 
+        /*===Project Log ================================*/
+        $projectLog = new ProjectLog();
+        $projectLog->projectId = $projectId;
+        $projectLog->userId = Auth::user()->id;
+        $projectLog->controllerName = 'ProjectController';
+        $projectLog->action = 'تعديل المشروع';
+        $projectLog->save();
+
 
         $catId = $request->input('projectCategory');
-        return redirect()->action('Admin\ProjectController@projectInCat' , $catId);*/
+        return redirect()->action('Admin\ProjectController@projectInCat' , $catId);
 
 
     }

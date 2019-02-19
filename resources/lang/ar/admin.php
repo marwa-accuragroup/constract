@@ -79,6 +79,7 @@ foreach ($allWords as $data) {
         'Logo' => 'الشعار',
         'Site Name' => 'اسم الموقع ',
         'Setting' => 'الاعدادات',
+        'ProjectElectrical' => 'قسم الكهرباء',
 
 
 

@@ -66,8 +66,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
-
-
+                                
                                     <form class="form-horizontal form-simple" method="POST"
                                           action="{{ route('login') }}" novalidate>
                                         {{ csrf_field() }}

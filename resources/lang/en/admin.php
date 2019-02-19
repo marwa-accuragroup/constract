@@ -3,6 +3,10 @@
 use App\Translate;
 
 $allWords = Translate::all();
+
+//var_dump($allWords[27]['name_ar']);
+
+
 foreach ($allWords as $data) {
 
 
@@ -81,6 +85,7 @@ foreach ($allWords as $data) {
         'Logo' => 'logo',
         'Site Name' => 'Site Name',
         'Setting' => 'Setting',
+        'ProjectElectrical' => 'Electrical Section',
 
 
 

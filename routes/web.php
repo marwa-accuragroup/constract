@@ -62,6 +62,10 @@ Route::group(['middleware' => ['auth', 'locale' ], 'prefix' => 'admin', 'namespa
     Route::any('finishedProjects', 'ProjectController@finishedProjects');
 
 
+    /*===============================*/
+    Route::resource('projectElectrical', 'ProjectElectricalController');
+
+
 
 
     /*Category=======*/
@@ -79,10 +83,6 @@ Route::group(['middleware' => ['auth', 'locale' ], 'prefix' => 'admin', 'namespa
     /*Beneficiaries=======*/
     Route::resource('beneficiaries', 'BeneficiariesController');
     Route::get('/delBeneficiaries/{id}', 'BeneficiariesController@delBeneficiaries');
-
-
-
-
 });
 
 

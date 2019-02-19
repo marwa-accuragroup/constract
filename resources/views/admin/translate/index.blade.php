@@ -23,10 +23,10 @@
         <div class="content-header-right col-md-6 col-12">
             <div class="dropdown float-md-right">
                 <div class="heading-elements">
-                    <!--a href="{{ action('Admin\TranslateController@create') }}"
+                    <a href="{{ action('Admin\TranslateController@create') }}"
                        class="btn btn-primary box-shadow-1  btn-min-width ml-1 mr-1">
                         @lang('admin.Add new item')
-                    </a-->
+                    </a>
                 </div>
 
 
