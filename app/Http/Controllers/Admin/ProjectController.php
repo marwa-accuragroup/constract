@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Lang;
@@ -18,6 +19,7 @@ use App\Projects;
 use App\ProjectDetails;
 use App\Contractor;
 use App\ProjectLog;
+use App\ProjectElectrical;
 
 class ProjectController extends Controller
 {
@@ -289,6 +291,8 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $editData = Projects::find($id);
+        $allWords = Translate::all();
+
 
         $catKeys = ProjectCat::where('catId', $editData->projectCategory)->get();
         foreach ($catKeys as $key) {
@@ -318,13 +322,14 @@ class ProjectController extends Controller
         $paper = ProjectDetails::where(['projectId' => $id , 'type' => 'paper' ])->get();
         $map = ProjectDetails::where(['projectId' => $id , 'type' => 'map' ])->get();
         $work = ProjectDetails::where(['projectId' => $id , 'type' => 'work' ])->get();
-        $electric = ProjectDetails::where(['projectId' => $id , 'type' => 'electric' ])->get();
+
+        $electric = ProjectElectrical::where(['projectId' => $id ])->first();
 
 
         return view('admin.project.edit')->with(['editData' => $editData  , 'catKeys' => $catKeys,
             'Site' => $Site, 'Beneficiaries' => $Beneficiaries, 'Supervisors' => $Supervisors,
             'paper' => $paper, 'map' => $map, 'work' => $work,
-            'electric' => $electric,]);
+            'electric' => $electric, 'allWords' => $allWords]);
     }
 
     /**
@@ -520,6 +525,7 @@ class ProjectController extends Controller
     {
         Projects::where('id' , $id)->delete();
         ProjectDetails::where('projectId' , $id)->delete();
+        ProjectElectrical::where('projectId' , $id)->delete();
         return redirect()->back();
     }
 

@@ -1,20 +1,19 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-        <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.Projects')</h3>
-        <div class="row breadcrumbs-top d-inline-block">
-            <div class="breadcrumb-wrapper col-12">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ URL :: to ('/admin/home')}}">@lang('admin.Home') </a>
-                    </li>
-                    <li class="breadcrumb-item"><a href="#">@lang('admin.Projects')</a>
-                    </li>
-                    <li class="breadcrumb-item active"> @lang('admin.Edit item')
-                    </li>
-                </ol>
-            </div>
+    <h3 class="content-header-title mb-0 d-inline-block">@lang('admin.ProjectElectrical') </h3>
+    <div class="row breadcrumbs-top d-inline-block">
+        <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ URL :: to ('/admin/home')}}">@lang('admin.Home') </a>
+                </li>
+                <li class="breadcrumb-item"><a href="#">@lang('admin.ProjectElectrical')</a>
+                </li>
+                <li class="breadcrumb-item active"> @lang('admin.Add new item')
+                </li>
+            </ol>
         </div>
+    </div>
     </div>
 
 
@@ -23,7 +22,7 @@
 
         <div class="card-body">
             <form class="form" role="form" method="post" enctype="multipart/form-data"
-                  action="{{ action('Admin\ProjectController@update' ,  $editData->id ) }}">
+                  action="{{ action('Admin\ProjectElectricalController@update' ,  $editData->id ) }}">
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
                 <div class="form-body">
@@ -36,686 +35,348 @@
                     </ul>
 
 
-                    <input type="hidden" class="form-control" name="projectCategory"
-                           value="{{ $editData->projectCategory }}">
-                    @foreach($catKeys as $key)
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"> {{ $key->name }}    </label>
-                            <div class="col-md-9">
-                                @if($key->type == 'text')
-                                    <input type="text" class="form-control" name="{{ $key->fieldName }}"
-                                           value="{{ $editData[$key->fieldName] }}">
-                                @elseif($key->type == 'date')
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">@lang('admin.Projects')</label>
+                        <div class="col-md-9">
+                            <select name="projectId" class="form-control ">
+                                <option value="0">@lang('admin.Choose')  </option>
+                                @foreach($allProject as $data)
+                                    <option value="{{ $data->id }}" @if($editData->projectId == $data->id) selected @endif>  {{ $data->projectName }}</option>
+                                @endforeach
 
-                                    <input type='text' name="{{$key->fieldName}}" class="form-control pickadate"
-                                           placeholder="Basic Pick-a-date" value="{{ $editData[$key->fieldName] }}"/>
+                            </select></div>
+                    </div>
 
 
-                                @elseif($key->type == 'itr')
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">@lang('admin.Beneficiaries')</label>
+                        <div class="col-md-9">
+                            <select name="beneficiaries" class="form-control ">
+                                <option value="0">@lang('admin.Choose')  </option>
+                                @foreach($allBeneficiaries as $data)
+                                    <option value="{{ $data->id }}" @if($editData->beneficiaries == $data->id) selected @endif>  {{ $data->name }}</option>
+                                @endforeach
+
+                            </select></div>
+                    </div>
 
 
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"> {{ $allWords[26]['name_'.App::getLocale()] }}</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="buildingNumber"
+                                   value="{{ $editData->buildingNumber }}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"> {{ $allWords[27]['name_'.App::getLocale()] }}</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="electricityNumber"
+                                   value="{{ $editData->electricityNumber }}"></div>
+                    </div>
 
 
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">{{ $allWords[28]['name_'.App::getLocale()] }}</label>
+                        <div class="col-md-8">
+                            <input type="radio"   value="1" name="currentStatusOfConnectionCharges"
+                             @if($editData->currentStatusOfConnectionCharges == 1) checked @endif>
+                            @lang('admin.Yes')
 
-                                    <div class="input-group">
-                                        <input type="text" class="form-control " name="{{ $key->fieldName }}[]">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary addItem" data-itr="{{ $key->id }}"
-                                                    data-name="{{ $key->fieldName }}"
-                                                    type="button"> @lang('admin.Add new item')</button>
-                                        </div>
+                            <input type="radio"   value="2" name="currentStatusOfConnectionCharges"
+                                   @if($editData->currentStatusOfConnectionCharges == 2) checked @endif>
+                            @lang('admin.No')
+                        </div>
+                    </div>
+
+
+                    <div id="currentDiv">
+
+                        <table>
+                            <tr>
+                                <th width="60%"></th>
+                                <th width="20%"></th>
+                                <th width="20%"></th>
+                            </tr>
+                            <tr>
+                                <th>{{ $allWords[29]['name_'.App::getLocale()] }}</th>
+                                <th>
+                                    <div class="col-md-8">
+                                        <input type="radio"   value="1"
+                                               name="waterElectric" @if($editData->waterElectric == 1) checked @endif>
+                                        @lang('admin.Yes')
+
+                                        <input type="radio"  value="2"
+                                               name="waterElectric" @if($editData->waterElectric == 2) checked @endif>
+                                        @lang('admin.No')
                                     </div>
+                                </th>
+                                <th><input type="file" name="waterElectricImg"></th>
+                            </tr>
 
-                                    <div class="input-group">
-                                        <table class="table table-striped">
-                                            <tbody class="itemContiner{{ $key->id }}">
+                            <tr>
+                                <th>{{ $allWords[30]['name_'.App::getLocale()] }}</th>
+                                <th>
+                                    <div class="col-md-8">
+                                        <input type="radio"   value="1"
+                                               name="financial" @if($editData->financial == 1) checked @endif>
+                                        @lang('admin.Yes')
 
-                                            <?php $id = $editData->id; $name = $key->fieldName;
-                                            $itr = \App\ProjectDetails::where(['projectId' => $id, 'type' => $name])->get(); ?>
-
-                                            @foreach($itr as $i)
-                                                @if($i->value != '' || $i->value != NULL)
-                                                    <tr>
-                                                        <td>{{$i->value}}</td>
-
-                                                        @if($i->userId == Auth::user()->id )
-                                                            <td>
-                                                                <a data-url="{{ action('Admin\SettingController@delItem') }}"
-                                                                   data-id="{{$i->id}}" data-tableName="project_details"
-                                                                   class="btn sbold red removeItemEdit">
-                                                                    <i class="ft-trash-2"></i> </a>
+                                        <input type="radio"   value="2"
+                                               name="financial" @if($editData->financial == 2) checked @endif>
+                                        @lang('admin.No')
+                                    </div>
+                                </th>
+                                <th><input type="file" name="financialImg"></th>
+                            </tr>
 
 
-                                                            </td>
-                                                        @else
-                                                            <td></td>
-                                                        @endif
-                                                    </tr>
-                                                @endif
+                            <tr>
+                                <th>{{ $allWords[31]['name_'.App::getLocale()] }}</th>
+                                <th>
+                                    <div class="col-md-8">
+                                        <input type="radio"   value="1"
+                                               name="minister" @if($editData->minister == 1) checked @endif>
+                                        @lang('admin.Yes')
+
+                                        <input type="radio"   value="2"
+                                               name="minister" @if($editData->minister == 2) checked @endif>
+                                        @lang('admin.No')
+                                    </div>
+                                </th>
+                                <th><input type="file" name="ministerImg"></th>
+                            </tr>
+
+
+                            <tr>
+                                <th>{{ $allWords[32]['name_'.App::getLocale()] }}</th>
+                                <th>
+                                    <div class="col-md-8">
+                                        <input type="radio"   value="1"
+                                               name="letter" @if($editData->letter == 1) checked @endif>
+                                        @lang('admin.Yes')
+
+                                        <input type="radio"   value="2"
+                                               name="letter" @if($editData->letter == 2) checked @endif>
+                                        @lang('admin.No')
+                                    </div>
+                                </th>
+                                <th><input type="file" name="letterImg"></th>
+                            </tr>
+
+
+                            <tr>
+                                <th>{{ $allWords[33]['name_'.App::getLocale()] }}</th>
+                                <th>
+                                    <div class="col-md-8">
+                                        <input type="radio"   value="1"
+                                               name="connectPower" @if($editData->connectPower == 1) checked @endif>
+                                        @lang('admin.Yes')
+
+                                        <input type="radio"   value="2"
+                                               name="connectPower" @if($editData->connectPower == 2) checked @endif>
+                                        @lang('admin.No')
+                                    </div>
+                                </th>
+                                <th></th>
+                            </tr>
+
+
+                            <tr>
+                                <th>@lang('admin.Notes')
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary addItem" data-itr="notes"
+                                                data-name="notes"
+                                                type="button"> @lang('admin.Add new item')</button>
+                                    </div>
+                                </th>
+                                <th colspan="2">
+
+                                    <table class="table table-striped">
+                                        <tbody class="itemContinernotes">
+                                        @foreach($notes as $note)
+                                            <tr>
+                                                <td colspan="2">{{ $note }}</td>
+                                            </tr>
+
                                             @endforeach
 
+                                        </tbody>
+                                    </table>
+                                </th>
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-
-
+                            </tr>
 
 
+                        </table>
 
 
-
-
-                                @elseif($key->type  == 'radio')
-                                    <div class="card-body">
-                                        <div class="d-inline-block custom-control custom-radio mr-1">
-                                            <input type="radio" class="custom-control-input" value="1"
-                                                   name="{{ $key->fieldName }}" id="radio1"
-                                                   @if($editData[$key->fieldName] == 1) checked @endif>
-                                            <label class="custom-control-label" for="radio1">@lang('admin.Yes')</label>
-                                        </div>
-                                        <div class="d-inline-block custom-control custom-radio mr-1">
-                                            <input type="radio" class="custom-control-input" value="2"
-                                                   name="{{ $key->fieldName }}" id="radio2"
-                                                   @if($editData[$key->fieldName] == 2) checked @endif>
-                                            <label class="custom-control-label" for="radio2"
-                                                   checked="">@lang('admin.No')</label>
-                                        </div>
-
-                                    </div>
-
-
-
-                                @elseif($key->fieldName  == 'projectSite')
-
-                                    <select name="{{ $key->fieldName }}" class="form-control ">
-                                        <option value="0">@lang('admin.Choose')  </option>
-                                        @foreach($Site as $data)
-                                            <option value="{{ $data->name }}"
-                                                    @if($editData[$key->fieldName] == $data->id) selected @endif>  {{ $data->name }}</option>
-                                        @endforeach
-
-                                    </select>
-
-
-                                @elseif($key->fieldName  == 'supervisors')
-
-                                    <select name="{{ $key->fieldName }}" class="form-control ">
-                                        <option value="0">@lang('admin.Choose')  </option>
-                                        @foreach($Supervisors as $data)
-                                            <option value="{{ $data->name }}"
-                                                    @if($editData[$key->fieldName] == $data->id) selected @endif>  {{ $data->name }}</option>
-                                        @endforeach
-
-                                    </select>
-
-                                @elseif($key->fieldName  == 'beneficiaries')
-
-                                    <select name="{{ $key->fieldName }}" class="form-control ">
-                                        <option value="0">@lang('admin.Choose')  </option>
-                                        @foreach($Beneficiaries as $data)
-                                            <option value="{{ $data->id }}"
-                                                    @if($editData[$key->fieldName] == $data->id) selected @endif>  {{ $data->name }}</option>
-                                        @endforeach
-
-                                    </select>
+                    </div>
 
 
 
 
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">{{ $allWords[34]['name_'.App::getLocale()] }}</label>
+                        <div class="col-md-8">
+                            <input type="radio" class="currentClass2" value="1" name="currentStatusMaterials"
+                                   @if($editData->currentStatusMaterials == 1) checked @endif>
+                            @lang('admin.Yes')
 
-                                @endif
-
-                            </div>
+                            <input type="radio" class="currentClass2" value="2" name="currentStatusMaterials"
+                                   @if($editData->currentStatusMaterials == 2) checked @endif>
+                            @lang('admin.No')
                         </div>
-                    @endforeach
+                    </div>
 
 
-                    <hr/>
-                    <section id="basic-tabs-components">
-                        <div class="row match-height">
+                    <div id="currentDiv2" >
 
-                            <div class="col-xl-12 col-lg-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title"> @lang('admin.Project extensions')  </h4>
+                        <table>
+                            <tr>
+                                <th width="60%"></th>
+                                <th width="20%"></th>
+                                <th width="20%"></th>
+                            </tr>
+                            <tr>
+                                <th>{{ $allWords[29]['name_'.App::getLocale()] }}</th>
+                                <th>
+                                    <div class="col-md-8">
+                                        <input type="radio"   value="1" @if($editData->waterElectricMaterials == 1) checked @endif
+                                               name="waterElectricMaterials">
+                                        @lang('admin.Yes')
+
+                                        <input type="radio" class=waterElectric value="2" @if($editData->waterElectricMaterials == 2) checked @endif
+                                               name="waterElectricMaterials">
+                                        @lang('admin.No')
                                     </div>
-                                    <div class="card-content">
-                                        <div class="card-body">
+                                </th>
+                                <th><input type="file" name="waterElectricMaterialsImg"></th>
+                            </tr>
 
-                                            </p>
-                                            <ul class="nav nav-tabs nav-topline">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" id="base-tab21" data-toggle="tab"
-                                                       aria-controls="tab21"
-                                                       href="#tab21"
-                                                       aria-expanded="true"> @lang('admin.Official project papers')</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="base-tab22" data-toggle="tab"
-                                                       aria-controls="tab22" href="#tab22"
-                                                       aria-expanded="false"> @lang('admin.Maps and charts')</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="base-tab23" data-toggle="tab"
-                                                       aria-controls="tab23" href="#tab23"
-                                                       aria-expanded="false">  @lang('admin.Scope of work')</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="base-tab23" data-toggle="tab"
-                                                       aria-controls="tab24" href="#tab24"
-                                                       aria-expanded="false">  @lang('admin.Electrical files')</a>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content px-1 pt-1 border-grey border-lighten-2 border-0-top">
+                            <tr>
+                                <th>{{ $allWords[30]['name_'.App::getLocale()] }}</th>
+                                <th>
+                                    <div class="col-md-8">
+                                        <input type="radio"   value="1" @if($editData->financialMaterials == 1) checked @endif
+                                               name="financialMaterials">
+                                        @lang('admin.Yes')
 
-
-                                                <div role="tabpanel" class="tab-pane active" id="tab21"
-                                                     aria-expanded="true" aria-labelledby="base-tab21">
-                                                    <table>
-                                                        <th>
-                                                            <button class="btn btn-primary addImg" data-name="paper"
-                                                                    type="button"> @lang('admin.Add new item')</button>
-                                                        </th>
-                                                        <th></th>
-                                                        <tbody id="imgContiner_paper">
-                                                        <tr>
-                                                            <td><input type="file" name="paper[]"></td>
-                                                            <td><a class="btn sbold red  removeItem"> <i
-                                                                            class="ft-trash-2"></i></a></td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-
-
-                                                    <hr/>
-
-                                                    @if(count($paper) > 0)
-                                                        <section id="image-gallery" class="card">
-                                                            <div class="card-header">
-                                                                <h4 class="card-title">@lang('admin.Official project papers') </h4>
-                                                                <a class="heading-elements-toggle">
-                                                                    <i class="la la-ellipsis-v font-medium-3"></i></a>
-                                                            </div>
-                                                            <div class="card-content">
-                                                                <div class="card-body">
-                                                                </div>
-                                                                <div class="card-body  my-gallery" itemscope
-                                                                     itemtype="http://schema.org/ImageGallery">
-                                                                    <div class="row">
-
-                                                                        @foreach($paper as $pp)
-                                                                            <figure class="col-lg-3 col-md-6 col-12"
-                                                                                    itemprop="associatedMedia" itemscope
-                                                                                    itemtype="http://schema.org/ImageObject">
-                                                                                <a href="{{ URL ::to ('public/images/'.$pp->value)}}"
-                                                                                   itemprop="contentUrl"
-                                                                                   data-size="480x360">
-                                                                                    <img class="img-thumbnail img-fluid"
-                                                                                         src="{{ URL ::to ('public/images/'.$pp->value)}}"
-                                                                                         itemprop="thumbnail"
-                                                                                         alt="Image description"/>
-                                                                                </a>
-
-
-                                                                                @if($pp->userId == Auth::user()->id )
-
-                                                                                        <a data-url="{{ action('Admin\SettingController@delItem') }}"
-                                                                                           data-id="{{$pp->id}}" data-tableName="project_details"
-                                                                                           class="btn sbold red removeItemEdit">
-                                                                                            <i class="ft-trash-2"></i> </a>
-                                                                                @endif
-
-                                                                            </figure>
-                                                                        @endforeach
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Root element of PhotoSwipe. Must have class pswp. -->
-                                                                <div class="pswp" tabindex="-1" role="dialog"
-                                                                     aria-hidden="true">
-                                                                    <!-- Background of PhotoSwipe.
-                                                                   It's a separate element as animating opacity is faster than rgba(). -->
-                                                                    <div class="pswp__bg"></div>
-                                                                    <!-- Slides wrapper with overflow:hidden. -->
-                                                                    <div class="pswp__scroll-wrap">
-                                                                        <!-- Container that holds slides.
-                                                                        PhotoSwipe keeps only 3 of them in the DOM to save memory.
-                                                                        Don't modify these 3 pswp__item elements, data is added later on. -->
-                                                                        <div class="pswp__container">
-                                                                            <div class="pswp__item"></div>
-                                                                            <div class="pswp__item"></div>
-                                                                            <div class="pswp__item"></div>
-                                                                        </div>
-                                                                        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-                                                                        <div class="pswp__ui pswp__ui--hidden">
-                                                                            <div class="pswp__top-bar">
-                                                                                <!--  Controls are self-explanatory. Order can be changed. -->
-                                                                                <div class="pswp__counter"></div>
-                                                                                <button class="pswp__button pswp__button--close"
-                                                                                        title="Close (Esc)"></button>
-                                                                                <button class="pswp__button pswp__button--share"
-                                                                                        title="Share"></button>
-                                                                                <button class="pswp__button pswp__button--fs"
-                                                                                        title="Toggle fullscreen"></button>
-                                                                                <button class="pswp__button pswp__button--zoom"
-                                                                                        title="Zoom in/out"></button>
-                                                                                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                                                                                <!-- element will get class pswp__preloader-active when preloader is running -->
-                                                                                <div class="pswp__preloader">
-                                                                                    <div class="pswp__preloader__icn">
-                                                                                        <div class="pswp__preloader__cut">
-                                                                                            <div class="pswp__preloader__donut"></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                                                                                <div class="pswp__share-tooltip"></div>
-                                                                            </div>
-                                                                            <button class="pswp__button pswp__button--arrow--left"
-                                                                                    title="Previous (arrow left)">
-                                                                            </button>
-                                                                            <button class="pswp__button pswp__button--arrow--right"
-                                                                                    title="Next (arrow right)">
-                                                                            </button>
-                                                                            <div class="pswp__caption">
-                                                                                <div class="pswp__caption__center"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!--/ PhotoSwipe -->
-                                                        </section>
-                                                    @endif
-
-
-                                                </div>
-
-
-                                                <div class="tab-pane" id="tab22" aria-labelledby="base-tab22">
-
-
-                                                    <table>
-                                                        <th>
-                                                            <button class="btn btn-primary addImg" data-name="map"
-                                                                    type="button"> @lang('admin.Add new item')</button>
-                                                        </th>
-                                                        <th></th>
-                                                        <tbody id="imgContiner_map">
-                                                        <tr>
-                                                            <td><input type="file" name="map[]"></td>
-                                                            <td><a class="btn sbold red  removeItem"> <i
-                                                                            class="ft-trash-2"></i></a></td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-
-
-                                                    <hr/>
-
-                                                    @if(count($map) > 0)
-                                                        <section id="image-gallery" class="card">
-                                                            <div class="card-header">
-                                                                <h4 class="card-title">@lang('admin.Maps and charts') </h4>
-                                                                <a class="heading-elements-toggle">
-                                                                    <i class="la la-ellipsis-v font-medium-3"></i></a>
-                                                            </div>
-                                                            <div class="card-content">
-                                                                <div class="card-body">
-                                                                </div>
-                                                                <div class="card-body  my-gallery" itemscope
-                                                                     itemtype="http://schema.org/ImageGallery">
-                                                                    <div class="row">
-
-                                                                        @foreach($map as $m)
-                                                                            <figure class="col-lg-3 col-md-6 col-12"
-                                                                                    itemprop="associatedMedia" itemscope
-                                                                                    itemtype="http://schema.org/ImageObject">
-                                                                                <a href="{{ URL ::to ('public/images/'.$m->value)}}"
-                                                                                   itemprop="contentUrl"
-                                                                                   data-size="480x360">
-                                                                                    <img class="img-thumbnail img-fluid"
-                                                                                         src="{{ URL ::to ('public/images/'.$m->value)}}"
-                                                                                         itemprop="thumbnail"
-                                                                                         alt="Image description"/>
-                                                                                </a>
-
-
-                                                                                @if($m->userId == Auth::user()->id )
-
-                                                                                    <a data-url="{{ action('Admin\SettingController@delItem') }}"
-                                                                                       data-id="{{$m->id}}" data-tableName="project_details"
-                                                                                       class="btn sbold red removeItemEdit">
-                                                                                        <i class="ft-trash-2"></i> </a>
-                                                                                @endif
-
-                                                                            </figure>
-                                                                        @endforeach
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Root element of PhotoSwipe. Must have class pswp. -->
-                                                                <div class="pswp" tabindex="-1" role="dialog"
-                                                                     aria-hidden="true">
-                                                                    <!-- Background of PhotoSwipe.
-                                                                   It's a separate element as animating opacity is faster than rgba(). -->
-                                                                    <div class="pswp__bg"></div>
-                                                                    <!-- Slides wrapper with overflow:hidden. -->
-                                                                    <div class="pswp__scroll-wrap">
-                                                                        <!-- Container that holds slides.
-                                                                        PhotoSwipe keeps only 3 of them in the DOM to save memory.
-                                                                        Don't modify these 3 pswp__item elements, data is added later on. -->
-                                                                        <div class="pswp__container">
-                                                                            <div class="pswp__item"></div>
-                                                                            <div class="pswp__item"></div>
-                                                                            <div class="pswp__item"></div>
-                                                                        </div>
-                                                                        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-                                                                        <div class="pswp__ui pswp__ui--hidden">
-                                                                            <div class="pswp__top-bar">
-                                                                                <!--  Controls are self-explanatory. Order can be changed. -->
-                                                                                <div class="pswp__counter"></div>
-                                                                                <button class="pswp__button pswp__button--close"
-                                                                                        title="Close (Esc)"></button>
-                                                                                <button class="pswp__button pswp__button--share"
-                                                                                        title="Share"></button>
-                                                                                <button class="pswp__button pswp__button--fs"
-                                                                                        title="Toggle fullscreen"></button>
-                                                                                <button class="pswp__button pswp__button--zoom"
-                                                                                        title="Zoom in/out"></button>
-                                                                                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                                                                                <!-- element will get class pswp__preloader-active when preloader is running -->
-                                                                                <div class="pswp__preloader">
-                                                                                    <div class="pswp__preloader__icn">
-                                                                                        <div class="pswp__preloader__cut">
-                                                                                            <div class="pswp__preloader__donut"></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                                                                                <div class="pswp__share-tooltip"></div>
-                                                                            </div>
-                                                                            <button class="pswp__button pswp__button--arrow--left"
-                                                                                    title="Previous (arrow left)">
-                                                                            </button>
-                                                                            <button class="pswp__button pswp__button--arrow--right"
-                                                                                    title="Next (arrow right)">
-                                                                            </button>
-                                                                            <div class="pswp__caption">
-                                                                                <div class="pswp__caption__center"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!--/ PhotoSwipe -->
-                                                        </section>
-                                                    @endif
-
-
-
-                                                </div>
-                                                <div class="tab-pane" id="tab23" aria-labelledby="base-tab23">
-
-                                                    <table>
-                                                        <th>
-                                                            <button class="btn btn-primary addImg" data-name="work"
-                                                                    type="button"> @lang('admin.Add new item')</button>
-                                                        </th>
-                                                        <th></th>
-                                                        <tbody id="imgContiner_work">
-                                                        <tr>
-                                                            <td><input type="file" name="work[]"></td>
-                                                            <td><a class="btn sbold red  removeItem"> <i
-                                                                            class="ft-trash-2"></i></a></td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-
-
-                                                    <hr/>
-
-                                                    @if(count($work) > 0)
-                                                        <section id="image-gallery" class="card">
-                                                            <div class="card-header">
-                                                                <h4 class="card-title">@lang('admin.Scope of work') </h4>
-                                                                <a class="heading-elements-toggle">
-                                                                    <i class="la la-ellipsis-v font-medium-3"></i></a>
-                                                            </div>
-                                                            <div class="card-content">
-                                                                <div class="card-body">
-                                                                </div>
-                                                                <div class="card-body  my-gallery" itemscope
-                                                                     itemtype="http://schema.org/ImageGallery">
-                                                                    <div class="row">
-
-                                                                        @foreach($work as $w)
-                                                                            <figure class="col-lg-3 col-md-6 col-12"
-                                                                                    itemprop="associatedMedia" itemscope
-                                                                                    itemtype="http://schema.org/ImageObject">
-                                                                                <a href="{{ URL ::to ('public/images/'.$w->value)}}"
-                                                                                   itemprop="contentUrl"
-                                                                                   data-size="480x360">
-                                                                                    <img class="img-thumbnail img-fluid"
-                                                                                         src="{{ URL ::to ('public/images/'.$w->value)}}"
-                                                                                         itemprop="thumbnail"
-                                                                                         alt="Image description"/>
-                                                                                </a>
-
-
-                                                                                @if($w->userId == Auth::user()->id )
-
-                                                                                    <a data-url="{{ action('Admin\SettingController@delItem') }}"
-                                                                                       data-id="{{$w->id}}" data-tableName="project_details"
-                                                                                       class="btn sbold red removeItemEdit">
-                                                                                        <i class="ft-trash-2"></i> </a>
-                                                                                @endif
-
-                                                                            </figure>
-                                                                        @endforeach
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Root element of PhotoSwipe. Must have class pswp. -->
-                                                                <div class="pswp" tabindex="-1" role="dialog"
-                                                                     aria-hidden="true">
-                                                                    <!-- Background of PhotoSwipe.
-                                                                   It's a separate element as animating opacity is faster than rgba(). -->
-                                                                    <div class="pswp__bg"></div>
-                                                                    <!-- Slides wrapper with overflow:hidden. -->
-                                                                    <div class="pswp__scroll-wrap">
-                                                                        <!-- Container that holds slides.
-                                                                        PhotoSwipe keeps only 3 of them in the DOM to save memory.
-                                                                        Don't modify these 3 pswp__item elements, data is added later on. -->
-                                                                        <div class="pswp__container">
-                                                                            <div class="pswp__item"></div>
-                                                                            <div class="pswp__item"></div>
-                                                                            <div class="pswp__item"></div>
-                                                                        </div>
-                                                                        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-                                                                        <div class="pswp__ui pswp__ui--hidden">
-                                                                            <div class="pswp__top-bar">
-                                                                                <!--  Controls are self-explanatory. Order can be changed. -->
-                                                                                <div class="pswp__counter"></div>
-                                                                                <button class="pswp__button pswp__button--close"
-                                                                                        title="Close (Esc)"></button>
-                                                                                <button class="pswp__button pswp__button--share"
-                                                                                        title="Share"></button>
-                                                                                <button class="pswp__button pswp__button--fs"
-                                                                                        title="Toggle fullscreen"></button>
-                                                                                <button class="pswp__button pswp__button--zoom"
-                                                                                        title="Zoom in/out"></button>
-                                                                                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                                                                                <!-- element will get class pswp__preloader-active when preloader is running -->
-                                                                                <div class="pswp__preloader">
-                                                                                    <div class="pswp__preloader__icn">
-                                                                                        <div class="pswp__preloader__cut">
-                                                                                            <div class="pswp__preloader__donut"></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                                                                                <div class="pswp__share-tooltip"></div>
-                                                                            </div>
-                                                                            <button class="pswp__button pswp__button--arrow--left"
-                                                                                    title="Previous (arrow left)">
-                                                                            </button>
-                                                                            <button class="pswp__button pswp__button--arrow--right"
-                                                                                    title="Next (arrow right)">
-                                                                            </button>
-                                                                            <div class="pswp__caption">
-                                                                                <div class="pswp__caption__center"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!--/ PhotoSwipe -->
-                                                        </section>
-                                                    @endif
-
-
-
-
-                                                </div>
-                                                <div class="tab-pane" id="tab24" aria-labelledby="base-tab24">
-
-
-                                                    <table>
-                                                        <th>
-                                                            <button class="btn btn-primary addImg" data-name="electric"
-                                                                    type="button"> @lang('admin.Add new item')</button>
-                                                        </th>
-                                                        <th></th>
-                                                        <tbody id="imgContiner_electric">
-                                                        <tr>
-                                                            <td><input type="file" name="electric[]"></td>
-                                                            <td><a class="btn sbold red  removeItem"> <i
-                                                                            class="ft-trash-2"></i></a></td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-
-
-                                                    <hr/>
-
-                                                    @if(count($electric) > 0)
-                                                        <section id="image-gallery" class="card">
-                                                            <div class="card-header">
-                                                                <h4 class="card-title">@lang('admin.Electrical files') </h4>
-                                                                <a class="heading-elements-toggle">
-                                                                    <i class="la la-ellipsis-v font-medium-3"></i></a>
-                                                            </div>
-                                                            <div class="card-content">
-                                                                <div class="card-body">
-                                                                </div>
-                                                                <div class="card-body  my-gallery" itemscope
-                                                                     itemtype="http://schema.org/ImageGallery">
-                                                                    <div class="row">
-
-                                                                        @foreach($electric as $ee)
-                                                                            <figure class="col-lg-3 col-md-6 col-12"
-                                                                                    itemprop="associatedMedia" itemscope
-                                                                                    itemtype="http://schema.org/ImageObject">
-                                                                                <a href="{{ URL ::to ('public/images/'.$ee->value)}}"
-                                                                                   itemprop="contentUrl"
-                                                                                   data-size="480x360">
-                                                                                    <img class="img-thumbnail img-fluid"
-                                                                                         src="{{ URL ::to ('public/images/'.$ee->value)}}"
-                                                                                         itemprop="thumbnail"
-                                                                                         alt="Image description"/>
-                                                                                </a>
-
-
-                                                                                @if($ee->userId == Auth::user()->id )
-
-                                                                                    <a data-url="{{ action('Admin\SettingController@delItem') }}"
-                                                                                       data-id="{{$ee->id}}" data-tableName="project_details"
-                                                                                       class="btn sbold red removeItemEdit">
-                                                                                        <i class="ft-trash-2"></i> </a>
-                                                                                @endif
-
-                                                                            </figure>
-                                                                        @endforeach
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Root element of PhotoSwipe. Must have class pswp. -->
-                                                                <div class="pswp" tabindex="-1" role="dialog"
-                                                                     aria-hidden="true">
-                                                                    <!-- Background of PhotoSwipe.
-                                                                   It's a separate element as animating opacity is faster than rgba(). -->
-                                                                    <div class="pswp__bg"></div>
-                                                                    <!-- Slides wrapper with overflow:hidden. -->
-                                                                    <div class="pswp__scroll-wrap">
-                                                                        <!-- Container that holds slides.
-                                                                        PhotoSwipe keeps only 3 of them in the DOM to save memory.
-                                                                        Don't modify these 3 pswp__item elements, data is added later on. -->
-                                                                        <div class="pswp__container">
-                                                                            <div class="pswp__item"></div>
-                                                                            <div class="pswp__item"></div>
-                                                                            <div class="pswp__item"></div>
-                                                                        </div>
-                                                                        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-                                                                        <div class="pswp__ui pswp__ui--hidden">
-                                                                            <div class="pswp__top-bar">
-                                                                                <!--  Controls are self-explanatory. Order can be changed. -->
-                                                                                <div class="pswp__counter"></div>
-                                                                                <button class="pswp__button pswp__button--close"
-                                                                                        title="Close (Esc)"></button>
-                                                                                <button class="pswp__button pswp__button--share"
-                                                                                        title="Share"></button>
-                                                                                <button class="pswp__button pswp__button--fs"
-                                                                                        title="Toggle fullscreen"></button>
-                                                                                <button class="pswp__button pswp__button--zoom"
-                                                                                        title="Zoom in/out"></button>
-                                                                                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                                                                                <!-- element will get class pswp__preloader-active when preloader is running -->
-                                                                                <div class="pswp__preloader">
-                                                                                    <div class="pswp__preloader__icn">
-                                                                                        <div class="pswp__preloader__cut">
-                                                                                            <div class="pswp__preloader__donut"></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                                                                                <div class="pswp__share-tooltip"></div>
-                                                                            </div>
-                                                                            <button class="pswp__button pswp__button--arrow--left"
-                                                                                    title="Previous (arrow left)">
-                                                                            </button>
-                                                                            <button class="pswp__button pswp__button--arrow--right"
-                                                                                    title="Next (arrow right)">
-                                                                            </button>
-                                                                            <div class="pswp__caption">
-                                                                                <div class="pswp__caption__center"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!--/ PhotoSwipe -->
-                                                        </section>
-                                                    @endif
-
-
-
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <input type="radio"   value="2" @if($editData->financialMaterials == 2) checked @endif
+                                               name="financialMaterials">
+                                        @lang('admin.No')
                                     </div>
-                                </div>
-                            </div>
+                                </th>
+                                <th><input type="file" name="financiaMaterialslImg"></th>
+                            </tr>
 
 
-                        </div>
-                    </section>
+                            <tr>
+                                <th>{{ $allWords[31]['name_'.App::getLocale()] }}</th>
+                                <th>
+                                    <div class="col-md-8">
+                                        <input type="radio"   value="1" @if($editData->ministerMaterials == 1) checked @endif
+                                               name="ministerMaterials">
+                                        @lang('admin.Yes')
+
+                                        <input type="radio"   value="2" @if($editData->ministerMaterials == 2) checked @endif
+                                               name="ministerMaterials">
+                                        @lang('admin.No')
+                                    </div>
+                                </th>
+                                <th><input type="file" name="ministerMaterialsImg"></th>
+                            </tr>
+
+
+                            <tr>
+                                <th>{{ $allWords[32]['name_'.App::getLocale()] }}</th>
+                                <th>
+                                    <div class="col-md-8">
+                                        <input type="radio"   value="1" @if($editData->letterMaterials == 1) checked @endif
+                                               name="letterMaterials">
+                                        @lang('admin.Yes')
+
+                                        <input type="radio"   value="2" @if($editData->letterMaterials == 2) checked @endif
+                                               name="letterMaterials">
+                                        @lang('admin.No')
+                                    </div>
+                                </th>
+                                <th><input type="file" name="letterMaterialsImg"></th>
+                            </tr>
+
+
+                            <tr>
+                                <th>{{ $allWords[36]['name_'.App::getLocale()] }}</th>
+                                <th>
+                                    <div class="col-md-8">
+                                        <input type="radio"   value="1" @if($editData->materialsToContractor == 1) checked @endif
+                                               name="materialsToContractor">
+                                        @lang('admin.Yes')
+
+                                        <input type="radio"   value="2" @if($editData->materialsToContractor == 2) checked @endif
+                                               name="materialsToContractor">
+                                        @lang('admin.No')
+                                    </div>
+                                </th>
+                                <th></th>
+                            </tr>
+
+
+                            <tr>
+                                <th>@lang('admin.Notes')
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary addItem" data-itr="notesMaterials"
+                                                data-name="notesMaterials"
+                                                type="button"> @lang('admin.Add new item')</button>
+                                    </div>
+                                </th>
+                                <th colspan="2">
+
+                                    <table class="table table-striped">
+                                        <tbody class="itemContinernotesMaterials">
+                                        @foreach($notesM as $note)
+                                            <tr>
+                                                <td colspan="2">{{ $note }}</td>
+                                            </tr>
+
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </th>
+
+                            </tr>
+
+
+                        </table>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 </div>
-
                 <div class="form-actions text-center">
                     <button type="submit" class="btn btn-primary btn-min-width box-shadow-1 ml-1">
                         <i class="la la-check-square-o"></i>

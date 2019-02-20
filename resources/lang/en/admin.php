@@ -22,7 +22,7 @@ foreach ($allWords as $data) {
    | these language lines according to your application's requirements.
    |
    */
-        $data->wordKey => $data->name_en,
+
 
 
         'Change Language' => 'Change Language',
@@ -81,14 +81,18 @@ foreach ($allWords as $data) {
         'Choose' => 'Choose',
         'Finished Projects' => 'Finished Projects',
         'Details' => 'Details',
-
         'Logo' => 'logo',
         'Site Name' => 'Site Name',
         'Setting' => 'Setting',
         'ProjectElectrical' => 'Electrical Section',
+        'No Data Found' => 'No Data Found',
+        'contractorName' => 'contractorName',
+        'finalValue' => 'finalValue',
+        'endDate' => 'endDate',
+        'beneficiaries' => 'Beneficiaries',
 
 
-
+        $data->wordKey => $data->name_en,
 
     ];
 }

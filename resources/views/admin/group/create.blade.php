@@ -94,6 +94,27 @@
                     </div>
 
 
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">@lang('admin.Categories') </label>
+                        <div class="col-md-9">
+
+
+                            <div class="mt-checkbox-list">
+                                <ul class="nested" id="nested">
+                                    @foreach($projectCat as $data)
+
+                                        <li><input type="checkbox" name="cat[]"
+                                                   value="{{  $data->id }}"> {{ $data->name  }} </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
                 </div>
 
 

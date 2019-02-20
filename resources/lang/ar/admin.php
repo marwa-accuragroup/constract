@@ -17,7 +17,7 @@ foreach ($allWords as $data) {
    | these language lines according to your application's requirements.
    |
    */
-        $data->wordKey => $data->name_ar,
+
 
         'Change Language' => 'تغير اللغه',
         'Arabic' => 'اللغه العربيه',
@@ -75,15 +75,19 @@ foreach ($allWords as $data) {
         'Choose' => 'اختر',
         'Finished Projects' => 'المشاريع المنتهيه',
         'Details' => 'التفاصيل',
-
         'Logo' => 'الشعار',
         'Site Name' => 'اسم الموقع ',
         'Setting' => 'الاعدادات',
         'ProjectElectrical' => 'قسم الكهرباء',
+        'No Data Found' => 'لا يوجد بيانات',
+        'contractorName' => 'سم المقاول',
+        'finalValue' => 'القيمه النهائيه',
+        'endDate' => 'تاريخ الانتهاء',
+        'beneficiaries' => 'الجهات المستفيده',
 
 
 
-
+        $data->wordKey => $data->name_ar,
 
     ];
 }

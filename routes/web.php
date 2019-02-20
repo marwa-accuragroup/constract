@@ -21,13 +21,15 @@ Route::get('/', function () {
     }
 });
 
-/*Auth=======*/
-Auth::routes();
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 
 
 //for permission ,'permission'
-Route::group(['middleware' => ['auth', 'locale' ], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['middleware' => ['auth', 'locale'  ], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+
+    /*Auth=======*/
+    Auth::routes();
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
     //
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/changelang/{locale}', 'HomeController@changeLang');
@@ -60,11 +62,8 @@ Route::group(['middleware' => ['auth', 'locale' ], 'prefix' => 'admin', 'namespa
     Route::get('projectInCat/{id}', 'ProjectController@projectInCat');
     /*Finished Projects=======*/
     Route::any('finishedProjects', 'ProjectController@finishedProjects');
-
-
-    /*===============================*/
+    /*project Electrical===========*/
     Route::resource('projectElectrical', 'ProjectElectricalController');
-
 
 
 
@@ -83,6 +82,11 @@ Route::group(['middleware' => ['auth', 'locale' ], 'prefix' => 'admin', 'namespa
     /*Beneficiaries=======*/
     Route::resource('beneficiaries', 'BeneficiariesController');
     Route::get('/delBeneficiaries/{id}', 'BeneficiariesController@delBeneficiaries');
+
+    /*Work=============*/
+    Route::resource('workCat', 'WorkCatController');
+
+
 });
 
 

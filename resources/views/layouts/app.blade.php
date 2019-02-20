@@ -4,6 +4,7 @@
 <head>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="{{ trans('texts.description') }}">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -197,18 +198,18 @@
             @endforeach
 
 
-            <?php  $projectCat = \App\Cateory::all();?>
+            <?php  $projectCat = \App\UserMenuCat::where('groupId' , Auth::user()->groupId )->get();?>
             @foreach($projectCat as $cat)
                 <li class=" nav-item ">
-                    <a href="{{ action('Admin\ProjectController@projectInCat' , $cat->id) }}">
-                        <i class="{{ $cat->icon }}"></i>
+                    <a href="{{ action('Admin\ProjectController@projectInCat' , $cat->catId) }}">
+                        <i class="{{ $cat->Cateory->icon }}"></i>
 
                         @if($locale == 'ar')
                         <span class="menu-title" data-i18n="nav.dash.main">
-                            {{ $cat->name }} </span>
+                            {{ $cat->Cateory->name }} </span>
                             @else
                             <span class="menu-title" data-i18n="nav.dash.main">
-                            {{ $cat->name_en }} </span>
+                            {{ $cat->Cateory->name_en }} </span>
                         @endif
                     </a>
                 </li>

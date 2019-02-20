@@ -1,5 +1,5 @@
 $(document).ready(function (e) {
-    // alert('in js');
+
     /*================================*/
 
     $('.nested input[type=checkbox]').click(function () {
@@ -51,6 +51,32 @@ $(document).ready(function (e) {
             + '<td><a class="btn sbold red  removeItem">  <i class="ft-trash-2"></i></a></td> </tr>');
 
     });
+
+
+    /*================================*/
+    $('input[type=radio][name=currentStatusOfConnectionCharges]').change(function() {
+        if (this.value == 1) {
+           $('#currentDiv').css('display' , 'block');
+        }
+        else if (this.value == 2) {
+            $('#currentDiv').css('display' , 'none');
+        }
+    });
+
+
+    $('input[type=radio][name=currentStatusMaterials]').change(function() {
+        if (this.value == 1) {
+            $('#currentDiv2').css('display' , 'block');
+        }
+        else if (this.value == 2) {
+            $('#currentDiv2').css('display' , 'none');
+        }
+    });
+
+
+
+
+
 
 
 });
