@@ -90,6 +90,22 @@ foreach ($allWords as $data) {
         'finalValue' => 'finalValue',
         'endDate' => 'endDate',
         'beneficiaries' => 'Beneficiaries',
+        'workCat' => 'Work Categories',
+        'workRequest' => 'Work Request',
+        'requestNo' => 'Request No',
+        'bidderNo' => 'Bidder No',
+        'address' => 'Address',
+        'price' => 'Price',
+        'balanceItem' => 'Balance Item',
+        'days' => 'Days',
+        'workApplication' => 'Work Application',
+        'fileNo' => 'File No',
+        'applicationNo' => 'Application No',
+        'closeDate' => 'Close Date',
+        'projectNoReq' => 'Project Number Request',
+        'areaNo' => 'Application number for the unit area and planning',
+
+
 
 
         $data->wordKey => $data->name_en,

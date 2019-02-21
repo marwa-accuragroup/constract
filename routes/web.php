@@ -22,14 +22,17 @@ Route::get('/', function () {
 });
 
 
-
+/*Auth=======*/
+Route::group(['middleware' => ['locale'  ]], function () {
+Auth::routes();
+});
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 //for permission ,'permission'
 Route::group(['middleware' => ['auth', 'locale'  ], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
-    /*Auth=======*/
-    Auth::routes();
-    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
     //
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/changelang/{locale}', 'HomeController@changeLang');
@@ -83,8 +86,16 @@ Route::group(['middleware' => ['auth', 'locale'  ], 'prefix' => 'admin', 'namesp
     Route::resource('beneficiaries', 'BeneficiariesController');
     Route::get('/delBeneficiaries/{id}', 'BeneficiariesController@delBeneficiaries');
 
-    /*Work=============*/
+    /*Work Cat=============*/
     Route::resource('workCat', 'WorkCatController');
+    Route::get('/delworkCat/{id}', 'WorkCatController@delworkCat');
+    /*Work Request=============*/
+    Route::resource('workRequest', 'WorkRequestController');
+    Route::get('/delworkRequest/{id}', 'WorkRequestController@delworkRequest');
+    /*Work Application=============*/
+    Route::resource('workApplication', 'WorkApplicationController');
+    Route::get('/delworkApp/{id}', 'WorkApplicationController@delworkApp');
+
 
 
 });

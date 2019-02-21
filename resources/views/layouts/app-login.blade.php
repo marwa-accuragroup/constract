@@ -97,7 +97,31 @@
                                     </span>
                                             @endif
                                         </fieldset>
-                                        <div class="form-group row">
+
+
+
+                                        <fieldset class="form-group position-relative has-icon-left">
+                                            <div class="card-body">
+                                                <div class="d-inline-block custom-control custom-radio mr-1">
+                                                    <input type="radio" class="custom-control-input" value="ar"
+                                                           name="lang" id="radio1">
+                                                    <label class="custom-control-label" for="radio1">@lang('admin.Arabic')</label>
+                                                </div>
+                                                <div class="d-inline-block custom-control custom-radio mr-1">
+                                                    <input type="radio" class="custom-control-input" value="en"
+                                                           name="lang" id="radio2">
+                                                    <label class="custom-control-label" for="radio2"
+                                                           checked="">@lang('admin.English')</label>
+                                                </div>
+
+                                            </div>
+
+
+                                        </fieldset>
+
+
+
+                                        <!--div class="form-group row">
                                             <div class="col-md-6 col-12 text-center text-md-left">
                                                 <fieldset>
                                                     <input type="checkbox" id="remember-me" class="chk-remember">
@@ -106,7 +130,7 @@
                                             </div>
                                             <div class="col-md-6 col-12 text-center text-md-right"></div>
 
-                                        </div>
+                                        </div-->
                                         <button type="submit" class="btn btn-info btn-lg btn-block"><i
                                                     class="ft-unlock"></i>
                                             تسجيل الدخول

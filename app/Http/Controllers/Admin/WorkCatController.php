@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\WorkCat;
 
 
 class WorkCatController extends Controller
@@ -16,7 +17,8 @@ class WorkCatController extends Controller
      */
     public function index()
     {
-        //
+        $allData = WorkCat::all();
+        return view('admin.workCat.index')->with([ 'allData' => $allData ]);
     }
 
     /**
@@ -26,7 +28,7 @@ class WorkCatController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.workCat.create');
     }
 
     /**
@@ -37,7 +39,16 @@ class WorkCatController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        //Insert
+        $item = new WorkCat();
+        $item->name = $request->input('name');
+        $item->save();
         //
+        return redirect()->action('Admin\WorkCatController@index');
     }
 
     /**
@@ -59,7 +70,8 @@ class WorkCatController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editData = WorkCat::find($id);
+        return view('admin.workCat.edit')->with(['editData' => $editData]);
     }
 
     /**
@@ -71,7 +83,16 @@ class WorkCatController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        //Insert
+        $item =  WorkCat::find($id);
+        $item->name = $request->input('name');
+        $item->save();
         //
+        return redirect()->action('Admin\WorkCatController@index');
     }
 
     /**
@@ -80,8 +101,10 @@ class WorkCatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delworkCat($id)
     {
-        //
+        WorkCat::where('id' , $id)->delete();
+        return redirect()->action('Admin\WorkCatController@index');
+
     }
 }
