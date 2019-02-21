@@ -98,7 +98,7 @@ foreach ($allWords as $data) {
         'closeDate' => 'تاريخ الاغلاق',
         'projectNoReq' => 'رقم طلب وحده المشاريع',
         'areaNo' => 'رقم طلب وحده المساحه والتخطيط',
-
+        'MoveProject' => 'نقل المشروع ',
 
 
         $data->wordKey => $data->name_ar,

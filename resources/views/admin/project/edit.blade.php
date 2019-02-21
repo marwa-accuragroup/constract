@@ -125,6 +125,15 @@
 
                                     </div>
 
+                                @elseif($key->fieldName  == 'contractorName')
+
+                                    <select name="{{ $key->fieldName }}" class="form-control ">
+                                        <option value="0">@lang('admin.Choose')  </option>
+                                        @foreach($Contractor as $data)
+                                            <option value="{{ $data->id }}">  {{ $data->name }}</option>
+                                        @endforeach
+
+                                    </select>
 
 
                                 @elseif($key->fieldName  == 'projectSite')

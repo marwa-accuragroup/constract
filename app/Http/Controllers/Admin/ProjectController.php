@@ -36,8 +36,9 @@ class ProjectController extends Controller
 
     public function projectInCat($id)
     {
+        $allCat = Cateory::all();
         $allData = Projects::where('projectCategory' ,$id )->get();
-        return view('admin.project.index')->with(['allData' => $allData , 'catId' => $id]);
+        return view('admin.project.index')->with(['allData' => $allData , 'catId' => $id , 'allCat' => $allCat]);
     }
     /**
      * Show the form for creating a new resource.
@@ -294,6 +295,7 @@ class ProjectController extends Controller
         $allWords = Translate::all();
 
 
+      //  dd($editData);
         $catKeys = ProjectCat::where('catId', $editData->projectCategory)->get();
         foreach ($catKeys as $key) {
             $translate = Translate::where('wordKey', $key->fieldName)->first();
@@ -319,6 +321,13 @@ class ProjectController extends Controller
 
         }
 
+        $Contractor = Contractor::all();
+        foreach ($Contractor as $data) {
+            $nameArr = json_decode($data->name, true);
+            $data->name = $nameArr['ar'];
+
+        }
+
         $paper = ProjectDetails::where(['projectId' => $id , 'type' => 'paper' ])->get();
         $map = ProjectDetails::where(['projectId' => $id , 'type' => 'map' ])->get();
         $work = ProjectDetails::where(['projectId' => $id , 'type' => 'work' ])->get();
@@ -329,7 +338,7 @@ class ProjectController extends Controller
         return view('admin.project.edit')->with(['editData' => $editData  , 'catKeys' => $catKeys,
             'Site' => $Site, 'Beneficiaries' => $Beneficiaries, 'Supervisors' => $Supervisors,
             'paper' => $paper, 'map' => $map, 'work' => $work,
-            'electric' => $electric, 'allWords' => $allWords]);
+            'electric' => $electric, 'allWords' => $allWords , 'Contractor' => $Contractor]);
     }
 
     /**
@@ -526,6 +535,7 @@ class ProjectController extends Controller
         Projects::where('id' , $id)->delete();
         ProjectDetails::where('projectId' , $id)->delete();
         ProjectElectrical::where('projectId' , $id)->delete();
+        ProjectLog::where('projectId' , $id)->delete();
         return redirect()->back();
     }
 
@@ -546,6 +556,25 @@ class ProjectController extends Controller
         }
         return view('admin.project.finishProject')->with(['allData' => $allData]);
     }
+
+    public  function updateProjectCat(Request $request){
+
+        Projects::where(['id' => $request->projectId ])->update([ 'projectCategory' => $request->projectCategory ]);
+
+
+        $catData = Cateory::find($request->projectCategory);
+        /*===Project Log ================================*/
+        $projectLog = new ProjectLog();
+        $projectLog->projectId = $request->projectId;
+        $projectLog->userId = Auth::user()->id;
+        $projectLog->controllerName = 'ProjectController';
+        $projectLog->action = 'تم نقل المشروع الى '.$catData->name;
+        $projectLog->save();
+
+        return redirect()->back();
+
+    }
+
 
 
 

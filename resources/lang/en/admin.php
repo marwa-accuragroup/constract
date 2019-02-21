@@ -104,6 +104,7 @@ foreach ($allWords as $data) {
         'closeDate' => 'Close Date',
         'projectNoReq' => 'Project Number Request',
         'areaNo' => 'Application number for the unit area and planning',
+        'MoveProject' => 'Move Project',
 
 
 

@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth', 'locale'  ], 'prefix' => 'admin', 'namesp
     Route::any('finishedProjects', 'ProjectController@finishedProjects');
     /*project Electrical===========*/
     Route::resource('projectElectrical', 'ProjectElectricalController');
+    /*update project cat ========*/
+    Route::post('updateProjectCat', 'ProjectController@updateProjectCat');
 
 
 
