@@ -69,6 +69,10 @@ Route::group(['middleware' => ['auth', 'locale'  ], 'prefix' => 'admin', 'namesp
     Route::resource('projectElectrical', 'ProjectElectricalController');
     /*update project cat ========*/
     Route::post('updateProjectCat', 'ProjectController@updateProjectCat');
+    /*All Project=======*/
+    Route::any('allProject', 'ProjectController@index');
+    Route::any('searchProject', 'ProjectController@search');
+
 
 
 
@@ -99,6 +103,9 @@ Route::group(['middleware' => ['auth', 'locale'  ], 'prefix' => 'admin', 'namesp
     Route::get('/delworkApp/{id}', 'WorkApplicationController@delworkApp');
 
 
+    /*currncies=============*/
+    Route::resource('currncies', 'CurrnciesController');
+    Route::get('/delCurr/{id}', 'CurrnciesController@delCurr');
 
 });
 

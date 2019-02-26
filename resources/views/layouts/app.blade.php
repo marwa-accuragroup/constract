@@ -27,13 +27,12 @@
     @else
         <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/css/vendors.css')}}">
     @endif
+    <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/forms/selects/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/pickers/daterange/daterangepicker.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
-
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/datatable/select.dataTables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/css/tables/extensions/keyTable.dataTables.min.css')}}">
-
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/js/gallery/photo-swipe/photoswipe.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ URL ::to ('assets/admin/app-assets/vendors/js/gallery/photo-swipe/default-skin/default-skin.css')}}">
 
@@ -251,6 +250,7 @@
         type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/gallery/photo-swipe/photoswipe-ui-default.min.js')}}"
         type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/forms/select/select2.full.min.js')}}" type="text/javascript"></script>
 
 <script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/pickadate/picker.js')}}" type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}" type="text/javascript"></script>
@@ -283,15 +283,15 @@
 <script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script>
 <!-- END MODERN JS-->
 <!-- BEGIN PAGE LEVEL JS-->
-<script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js')}}"  type="text/javascript"></script>
+<script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/forms/select/form-select2.js')}}" type="text/javascript"></script>
 
+<script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js')}}"  type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/pages/dashboard-sales.js')}}"
         type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/tables/datatables-extensions/datatable-keytable.js')}}"
         type="text/javascript"></script>
 <script src="{{ URL ::to ('assets/admin/app-assets/js/scripts/gallery/photo-swipe/photoswipe-script.js')}}"
         type="text/javascript"></script>
-
 <!-- END PAGE LEVEL JS-->
 
 <script src="{{ URL ::to ('assets/admin/custom.js')}}" type="text/javascript"></script>

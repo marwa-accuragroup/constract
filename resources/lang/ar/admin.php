@@ -99,7 +99,8 @@ foreach ($allWords as $data) {
         'projectNoReq' => 'رقم طلب وحده المشاريع',
         'areaNo' => 'رقم طلب وحده المساحه والتخطيط',
         'MoveProject' => 'نقل المشروع ',
-
+        'Search' => 'بحث',
+        'Reset' => 'مسح البيانات',
 
         $data->wordKey => $data->name_ar,
 
