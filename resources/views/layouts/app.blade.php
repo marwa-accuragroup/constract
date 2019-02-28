@@ -181,10 +181,13 @@
                     <span class="menu-title" data-i18n="nav.dash.main"> @lang('admin.Home')</span></a>
 
             </li>
-            <?php  $categories = \App\Menu::where('parentId', '=', 0)->get();?>
+            <?php //$userRole =  Auth::user()->roles[0]->name ; //dd($userRole);
+            $categories = \App\Menu::where([ 'parentId' => 0 /*, 'shortLink' => $userRole */])->get();
+            ?>
+
+
             @foreach($categories as $category)
                 <li class=" nav-item {{ Request::is($category->link.'*') ? 'active' : '' }}">
-
                     <a href="{{ url('/'.$category->link)  }}">
                         <i class="{{ $category->icon }}"></i>
                         <span class="menu-title" data-i18n="nav.dash.main">

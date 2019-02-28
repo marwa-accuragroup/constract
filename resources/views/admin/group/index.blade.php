@@ -70,7 +70,7 @@
                                             <td>
                                                 #
                                             </td>
-                                            <td> {{ $data->name }} </td>
+                                            <td> {{ $data->display_name }} </td>
 
                                             <td>
                                                 <a href="{{ action('Admin\UsergroupsController@edit' ,  $data->id) }}"

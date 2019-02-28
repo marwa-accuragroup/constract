@@ -36,15 +36,6 @@
                 </ul>
 
 
-                <!--div class="form-group">
-                    <label class="col-md-3 control-label">@lang('admin.Serial No') </label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" name="serialNo" readonly  value="{{ $serialNo }}"> </div>
-                </div-->
-
-
-
-
                 <div class="form-group">
                     <label class="col-md-3 control-label">@lang('admin.Name')</label>
                     <div class="col-md-9">
@@ -59,12 +50,6 @@
                 </div>
 
 
-                <div class="form-group">
-                    <label class="col-md-3 control-label">@lang('admin.Phone')</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" name="phone" value="{{ old('phone') }}"> </div>
-                </div>
-
 
                 <div class="form-group ">
                     <label class="control-label col-md-3"> @lang('admin.Password')</label>
@@ -78,9 +63,9 @@
                     <label class="col-md-3 control-label">  @lang('admin.Group name') </label>
                     <div class="col-md-9">
                         <select name="groupId" class="form-control select2">
-
+                            <option value="" >@lang('admin.Choose') </option>
                             @foreach($allGroup as $data)
-                                <option value="{{ $data->id }}" > {{ $data->name }}</option>
+                                <option value="{{ $data->name }}" > {{ $data->name }}</option>
                             @endforeach
 
                         </select>

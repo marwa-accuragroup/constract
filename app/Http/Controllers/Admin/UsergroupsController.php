@@ -14,13 +14,14 @@ use App\UserMenu;
 use App\UserController;
 use App\Cateory;
 use App\UserMenuCat;
+use App\Role;
 
 class UsergroupsController extends Controller
 {
     public function index()
     {
 
-        $allData = Usergroups::all();
+        $allData = Role::all();
         return view('admin.group.index')->with('lang', $allData);
 
 
@@ -51,37 +52,26 @@ class UsergroupsController extends Controller
 
 
         $this->validate($request, [
-            'name' => 'required|unique:usergroups',
+            'name' => 'required',
         ]);
-        $insert = new Usergroups();
-        $insert->name = $request->input('name');
-        //menu
-        $menu = $request->input('menu');
-        $permission = json_encode($menu);
-        $insert->permission = $permission;
+        $insert = new Role();
+        $insert->name = $request->input('mainName');
+        $insert->display_name = $request->input('name');
+        $insert->description = $request->input('description');
         $insert->save();
-        if (!empty($menu) && isset($menu)) {
-            foreach ($menu as $m) {
-                $insert_m = new UserMenu();
-                $insert_m->groupId = $insert->id;
-                $insert_m->menuId = $m;
-                $insert_m->value = 1;
-                $insert_m->save();
 
-            }
-        }
+        //
+        /* $cat = $request->input('cat');
+         if (!empty($cat) && isset($cat)) {
+             foreach ($cat as $m) {
+                 $insert_m = new UserMenuCat();
+                 $insert_m->groupId = $insert->id;
+                 $insert_m->catId = $m;
+                 $insert_m->value = 1;
+                 $insert_m->save();
 
-        $cat = $request->input('cat');
-        if (!empty($cat) && isset($cat)) {
-            foreach ($cat as $m) {
-                $insert_m = new UserMenuCat();
-                $insert_m->groupId = $insert->id;
-                $insert_m->catId = $m;
-                $insert_m->value = 1;
-                $insert_m->save();
-
-            }
-        }
+             }
+         }*/
 
         return redirect()->action('Admin\UsergroupsController@index');
 
@@ -106,7 +96,7 @@ class UsergroupsController extends Controller
      */
     public function edit($id)
     {
-        $editData = Usergroups::find($id);
+        $editData = Role::find($id);
         //
         $allMenu = Menu::where('parentId', '!=', 0)->get();
         $groupMenu = UserMenu::where('groupId', '=', $id)->get();
@@ -114,7 +104,7 @@ class UsergroupsController extends Controller
         $projectCat = Cateory::all();
         $catMenu = UserMenuCat::where('groupId', '=', $id)->get();
         return view('admin.group.edit')->with(['editData' => $editData, 'allMenu' => $allMenu,
-            'groupMenu' => $groupMenu , 'projectCat' => $projectCat ,  'catMenu' => $catMenu ,]);
+            'groupMenu' => $groupMenu, 'projectCat' => $projectCat, 'catMenu' => $catMenu,]);
     }
 
     /**
@@ -132,38 +122,24 @@ class UsergroupsController extends Controller
         ]);
 
 
-        $update = Usergroups::find($id);
-        $update->name = $request->input('name');
-        //menu
-        $menu = $request->input('menu');
-        // $permission = json_encode($menu);
-        $update->permission = '';
+        $update = Role::find($id);
+        $update->name = $request->input('mainName');
+        $update->display_name = $request->input('name');
+        $update->description = $request->input('description');
         $update->save();
         //
+        /* $cat = $request->input('cat');
+         if (!empty($cat) && isset($cat)) {
+             UserMenuCat::where('groupId', $id)->delete();
+             foreach ($cat as $m) {
+                 $insert_m = new UserMenuCat();
+                 $insert_m->groupId = $id;
+                 $insert_m->catId = $m;
+                 $insert_m->value = 1;
+                 $insert_m->save();
 
-        if (!empty($menu) && isset($menu)) {
-            UserMenu::where('groupId', $id)->delete();
-            foreach ($menu as $m) {
-                $insert_m = new UserMenu();
-                $insert_m->groupId = $id;
-                $insert_m->menuId = $m;
-                $insert_m->value = 1;
-                $insert_m->save();
-            }
-        }
-
-        $cat = $request->input('cat');
-        if (!empty($cat) && isset($cat)) {
-            UserMenuCat::where('groupId', $id)->delete();
-            foreach ($cat as $m) {
-                $insert_m = new UserMenuCat();
-                $insert_m->groupId = $id;
-                $insert_m->catId = $m;
-                $insert_m->value = 1;
-                $insert_m->save();
-
-            }
-        }
+             }
+         }*/
 
         return redirect()->action('Admin\UsergroupsController@index');
 
@@ -177,16 +153,9 @@ class UsergroupsController extends Controller
      */
     public function delgroup($id)
     {
-        $checkData = DB::table('users')->where('groupId', '=', $id)->get();
-        if (count($checkData) > 0) {
-            // return redirect()->action('Admin\UsergroupsController@index');
-        } else {
-            DB::table('usergroups')->where('id', '=', $id)->delete();
-            UserMenu::where('groupId', $id)->delete();
-            UserController::where('groupId', $id)->delete();
-            return redirect()->action('Admin\UsergroupsController@index');
-        }
-
-
+        DB::table('roles')->where('id', '=', $id)->delete();
+        return redirect()->action('Admin\UsergroupsController@index');
     }
+
+
 }

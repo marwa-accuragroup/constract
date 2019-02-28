@@ -36,6 +36,14 @@
 
 
                     <div class="form-group">
+                        <label class="col-md-3 control-label">@lang('admin.Role Name') </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="mainName"
+                                   value="{{ old('mainName') }}"></div>
+                    </div>
+
+
+                    <div class="form-group">
                         <label class="col-md-3 control-label">@lang('admin.Name') </label>
                         <div class="col-md-9">
                             <input type="text" class="form-control" name="name"
@@ -44,54 +52,13 @@
 
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label">@lang('admin.Permission') </label>
+                        <label class="col-md-3 control-label">@lang('admin.Descreption') </label>
                         <div class="col-md-9">
-
-
-                            <div class="mt-checkbox-list">
-                                <ul class="nested" id="nested">
-                                    @foreach($allMenu as $menu)
-
-                                        <li><input type="checkbox" name="menu[]"
-                                                   value="{{  $menu->id }}"> {{ $menu->name_ar  }}
-
-
-                                        <!--ul>
-                                                <li><input type="checkbox" name="permission_{{  $menu->id }}[]"
-                                                           value="index"> عرض الكل
-                                                </li>
-
-                                                <li><input type="checkbox" name="permission_{{  $menu->id }}[]"
-                                                           value="store"> اضافه
-                                                </li>
-
-                                                <li><input type="checkbox" name="permission_{{  $menu->id }}[]"
-                                                           value="show"> عرض العنصر
-                                                </li>
-
-
-                                                <li><input type="checkbox" name="permission_{{  $menu->id }}[]"
-                                                           value="update"> تعديل
-                                                </li>
-
-                                                <li><input type="checkbox" name="permission_{{  $menu->id }}[]"
-                                                           value="destroy"> حذف
-                                                </li>
-                                            </ul-->
-
-
-                                        </li>
-
-
-
-
-                                    @endforeach
-                                </ul>
-                            </div>
-
-
-                        </div>
+                            <input type="text" class="form-control" name="description"
+                                   value="{{ old('description') }}"></div>
                     </div>
+
+
 
 
 

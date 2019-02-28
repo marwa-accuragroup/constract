@@ -37,57 +37,29 @@
 
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label">@lang('admin.Name') </label>
+                        <label class="col-md-3 control-label">@lang('admin.Role Name') </label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="name" value="{{ $editData->name }}"></div>
+                            <input type="text" class="form-control" name="mainName"
+                                   value="{{ $editData->name }}"></div>
                     </div>
+
 
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label">@lang('admin.Permission')</label>
+                        <label class="col-md-3 control-label">@lang('admin.Name') </label>
                         <div class="col-md-9">
-
-                            <ul class="nested" id="nested">
-                                @foreach($allMenu as $menu)
-
-
-                                    <li><input type="checkbox" name="menu[]" value="{{  $menu->id }}"
-                                               @if($groupMenu->contains('menuId', $menu->id )) checked="checked" @endif > {{ $menu->name_ar  }}
-
-
-                                    <?php  $sub = App\UserController::where(['menuId' => $menu->id, 'groupId' => $editData->id])->get();?>
-
-
-
-                                    <!--ul >
-                                       <li> <input  type="checkbox"  @if($sub->contains('name', 'index' )) checked="checked" @endif
-                                            name="permission_{{  $menu->id }}[]"  value="index"> عرض الكل  </li>
-                                                        
-                                       <li> <input  type="checkbox"  @if($sub->contains('name', 'store' )) checked="checked" @endif
-                                            name="permission_{{  $menu->id }}[]" value="store"> اضافه </li>
-                                       
-                                        <li> <input type="checkbox"  @if($sub->contains('name', 'show' )) checked="checked" @endif
-                                            name="permission_{{  $menu->id }}[]" value="show" > عرض العنصر </li>
-                                        
-                                        
-                                         <li> <input type="checkbox"  @if($sub->contains('name', 'update' )) checked="checked" @endif
-                                            name="permission_{{  $menu->id }}[]" value="update" > تعديل </li>
-                                         
-                                          <li> <input type="checkbox"  @if($sub->contains('name', 'destroy' )) checked="checked" @endif
-                                            name="permission_{{  $menu->id }}[]" value="destroy" > حذف  </li>
-                                   </ul-->
-
-
-                                    </li>
-
-
-
-
-                                @endforeach
-
-                            </ul>
-                        </div>
+                            <input type="text" class="form-control" name="name" value="{{ $editData->display_name }}"></div>
                     </div>
+
+
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">@lang('admin.Descreption') </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="description"
+                                   value="{{ $editData->description }}"></div>
+                    </div>
+
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">@lang('admin.Categories') </label>

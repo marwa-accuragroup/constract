@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +15,12 @@ use App\Usergroups;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        //$this->middleware(['role:user']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,18 +28,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        if (Auth::user()) {
-            //
-            $allData = User::all();
-            foreach($allData as $data)
-            {
-                $groupData = Usergroups::find($data->groupId);
-                $data->groupName = $groupData->name;
-            }
-            return view('admin.admin.index')->with('allData', $allData);
-        } else {
-            return redirect()->route('login');
-        }
+        $allData = User::all();
+        return view('admin.admin.index')->with('allData', $allData);
+
     }
 
     /**
@@ -43,51 +41,41 @@ class AdminController extends Controller
 
     public function create()
     {
-        //
-        if (Auth::user()) {
 
-            $serialNo = Helper::randomString();
-            $allGroup = Usergroups::all();
-            return view('admin.admin.create')->with([ 'serialNo' => $serialNo,'allGroup' => $allGroup ]);
-        } else {
-            return redirect()->route('login');
-        }
+        $allGroup = Role::all();
+        return view('admin.admin.create')->with(['allGroup' => $allGroup]);
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        if (Auth::user()) {
-            $this->validate($request, [
-                'name' => 'required',
-                'email' => 'required|email|unique:users',
-                'phone' => 'required',
-                'password' => 'required',
-            ]);
-            $insert =  new User();
-            $insert->name = $request->input('name' );
-            $insert->email = $request->input('email' );
-            $insert->phone = $request->input('phone' );
-            $insert->password = Hash::make($request->password);
-            $insert->serialNo = $request->input('serialNo' );
-            $insert->groupId = $request->input('groupId' );
-            $insert->save();
-            return redirect()->action('Admin\AdminController@index');
-        } else {
-            return redirect()->route('login');
-        }
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+        ]);
+        $insert = new User();
+        $insert->name = $request->input('name');
+        $insert->email = $request->input('email');
+        $insert->password = Hash::make($request->password);
+        $insert->save();
+        //
+        $insert->attachRole($request->groupId);
+        return redirect()->action('Admin\AdminController@index');
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -98,65 +86,55 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
-        if (Auth::user()) {
 
-            $allGroup = Usergroups::all();
-            $editData = User::find($id);
+        $allGroup = Role::all();
+        $editData = User::find($id);
 
-            return  view('admin.admin.edit')->with(['editData' => $editData , 'allGroup' => $allGroup]);
-        } else {
-            return redirect()->route('login');
-        }
+        return view('admin.admin.edit')->with(['editData' => $editData, 'allGroup' => $allGroup]);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        if (Auth::user()) {
-            $this->validate($request, [
-                'name' => 'required',
 
-            ]);
-            //
-            if(empty($request->input('password' )))
-            {
-                $pass = $request->input('oldPassword' );
-            }
-            else{
-                $pass = $request->input('password' );
-            }
+        $this->validate($request, [
+            'name' => 'required',
 
-            $update =  User::find($id);
-            $update->name = $request->input('name' );
-            $update->email = $request->input('email' );
-            $update->phone = $request->input('phone' );
-            $update->password = Hash::make($pass);
-            $update->serialNo = $request->input('serialNo' );
-            $update->groupId = $request->input('groupId' );
-            $update->save();
-
-            return redirect()->action('Admin\AdminController@index');
+        ]);
+        //
+        if (empty($request->input('password'))) {
+            $pass = $request->input('oldPassword');
         } else {
-            return redirect()->route('login');
+            $pass = $request->input('password');
         }
+
+        $update = User::find($id);
+        $update->name = $request->input('name');
+        $update->email = $request->input('email');
+        $update->password = Hash::make($pass);
+        $update->save();
+        $update->attachRole($request->groupId);
+
+        return redirect()->action('Admin\AdminController@index');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function delAdmin($id)

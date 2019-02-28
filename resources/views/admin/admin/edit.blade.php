@@ -11,12 +11,13 @@
                         </li>
                         <li class="breadcrumb-item"><a href="#">@lang('admin.Users')</a>
                         </li>
-                        <li class="breadcrumb-item active"> @lang('admin.Edit item'')
+                        <li class="breadcrumb-item active"> @lang('admin.Edit item')
                         </li>
                     </ol>
                 </div>
             </div>
         </div>
+    </div>
 
 
 
@@ -38,12 +39,6 @@
                 </ul>
 
 
-                <!--div class="form-group">
-                    <label class="col-md-3 control-label">@lang('admin.Serial No') </label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" name="serialNo" readonly   value="{{ $editData->serialNo }}"> </div>
-                </div-->
-
 
 
                 <div class="form-group">
@@ -59,14 +54,6 @@
                         <input type="text" class="form-control" name="email" value="{{ $editData->email }}"> </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-md-3 control-label">@lang('admin.Phone')</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" name="phone" value="{{ $editData->phone }}"> </div>
-                </div>
-
-
-
                 <div class="form-group ">
                     <label class="control-label col-md-3"> @lang('admin.Password')</label>
                     <div class="col-md-9">
@@ -81,9 +68,9 @@
                     <label class="col-md-3 control-label">  @lang('admin.Group name') </label>
                     <div class="col-md-9">
                         <select name="groupId" class="form-control select2">
-
+                            <option value="" >@lang('admin.Choose') </option>
                             @foreach($allGroup as $data)
-                                <option value="{{ $data->id }}" @if($data->id == $editData->groupId) selected @endif>
+                                <option value="{{ $data->name }}" >
                                     {{ $data->name }}</option>
                             @endforeach
 

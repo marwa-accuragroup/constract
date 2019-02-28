@@ -74,7 +74,11 @@
                                             <td>
                                                 #
                                             </td>
-                                            <td> {{ $data->groupName }}    </td>
+                                            <td>
+                                                    @foreach($data->roles as $role)
+                                                        {{ $role->display_name }}
+                                                        @endforeach
+                                            </td>
                                             <td> {{ $data->name }}    </td>
 
                                             <td>{{ $data->email }}</td>
