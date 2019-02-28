@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label class="col-md-3 control-label">  القائمه الرئيسيه </label>
                     <div class="col-md-9">
-                        <select name="parentId" class="form-control ">
+                        <select name="parentId" class="select2  form-control ">
                             <option value="0" >لا يوجد</option>
                             @foreach($all as $data)
                                 <option value="{{ $data->id }}">  {{ $data->name_ar }}</option>
@@ -56,11 +56,11 @@
                         <input type="text" class="form-control" name="link" value="{{ old('link') }}"> </div>
                 </div>
 
-                <div class="form-group">
+                <!--div class="form-group">
                     <label class="col-md-3 control-label">الرابط المختصر</label>
                     <div class="col-md-9">
                         <input type="text" class="form-control" name="shortLink" value="{{ old('shortLink') }}"> </div>
-                </div>
+                </div-->
 
                 <div class="form-group">
                     <label class="col-md-3 control-label">الايقونه</label>
@@ -70,6 +70,20 @@
 
 
 
+                <div class="form-group">
+                    <label class="col-md-3 control-label"> Roles</label>
+                    <div class="col-md-9">
+
+                        <select name="roles" class="select2 form-control" multiple="multiple">
+                            <option value="0" >لا يوجد</option>
+                            @foreach($allRole as $data)
+                                <option value="{{ $data->name }}">  {{ $data->display_name }}</option>
+                            @endforeach
+
+                        </select>
+
+                    </div>
+                </div>
 
 
 

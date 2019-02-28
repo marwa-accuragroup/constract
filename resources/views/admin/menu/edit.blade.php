@@ -52,11 +52,11 @@
                         <input type="text" class="form-control" name="link" value="{{ $lang->link }}"> </div>
                 </div>
 
-                <div class="form-group">
+                <!--div class="form-group">
                     <label class="col-md-3 control-label">الرابط المختصر</label>
                     <div class="col-md-9">
                         <input type="text" class="form-control" name="shortLink" value="{{ $lang->shortLink }}"> </div>
-                </div>
+                </div-->
 
                 <div class="form-group">
                     <label class="col-md-3 control-label">الايقونه</label>
@@ -64,6 +64,21 @@
                         <input type="text" class="form-control" name="icon" value="{{ $lang->icon }}"> </div>
                 </div>
 
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label"> Roles</label>
+                    <div class="col-md-9">
+
+                        <select name="roles[]" class="select2 form-control" multiple="multiple">
+                            <option value="0" >لا يوجد</option>
+                            @foreach($allRole as $data)
+                                <option value="{{ $data->name }}">  {{ $data->display_name }}</option>
+                            @endforeach
+
+                        </select>
+
+                    </div>
+                </div>
 
 
 

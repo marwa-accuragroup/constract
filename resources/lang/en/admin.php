@@ -107,6 +107,9 @@ foreach ($allWords as $data) {
         'MoveProject' => 'Move Project',
         'Search' => 'Search',
         'Reset' => 'Reset',
+        'Role Name' => 'Role Name',
+        'Descreption' => 'Descreption',
+
 
 
 

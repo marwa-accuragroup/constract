@@ -21,51 +21,20 @@ class PermissionMenuMiddleware
     public function handle($request, Closure $next)
     {
 
-        //$this->middleware(['role:user']);
-       // dd(Auth::user()->roles[0]->name);
-      //  die();
-        //get user menu
-      // $userData = User::find(auth()->user()->id);
-        //menu
-       /* $link = $request->path();
-        //
-        $userMenu = UserMenu::where('roleId', Auth::user()->roles[0]->name)->get();
-        $mData = Menu::where('link', $link)->first();
-
-       // if( $userMenu->contains('menuId', $mData->id ) ){
-
-        if( $userMenu->contains('menuId', $mData->id ) ){
-            return $next($request);
-        }
-        else{
-            return redirect('admin/error');
-        }
-        return $next($request);*/
-
-       $userRoles = Auth::user()->roles;
+        $userRoles = Auth::user()->roles;
         $link = $request->path();
-      //  dd($userRoles);
-       if (count($userRoles) > 0)
-       {
-           foreach ($userRoles as $role)
-           {
+        foreach ($userRoles as $role) {
 
-               $mData = Menu::where([ 'shortLink' => $role->name  , 'link' => $link])->first();
-               //dd($mData);
-               if( $mData ){
-                   return $next($request);
-               }
-               else{
-                   return redirect('admin/error');
-               }
-           }
-       }
-       else{
-           return redirect('admin/error');
-       }
+            $mData = Menu::where(['roles' => $role->name])/*->where('link', 'like', $link . '%')*/->first();
+            //dd($mData);
+            if ($mData) {
+                return $next($request);
+            } else {
+                return redirect('admin/perm');
+            }
+        }
 
         return $next($request);
-
 
 
     }

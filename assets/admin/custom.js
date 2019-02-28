@@ -1,13 +1,67 @@
 $(document).ready(function (e) {
 
+   // alert(66);
     /*================================*/
 
-    $('.nested input[type=checkbox]').click(function () {
-        //   alert(66);
-        $(this).parent().find('li input[type=checkbox]').prop('checked', $(this).is(':checked'));
+    $("#RemoveAll").change(function() {
+        if ($(this).is(':checked'))
+            $("input:radio.radioR").attr("checked","checked");
+
+        else
+            $("input:radio.radioR").removeAttr("checked");
+    });
+});
+
+   /* $("input.radioMenu").click(function() {
+
+
+        alert(555);
+
+       /* if ($(this).attr('checked') === "checked"){
+
+            $("input:radio[class*='radioR']").attr("checked","checked");
+
+        }else{
+
+            $("input:radio[class*='radioR']").removeAttr("checked");
+
+        }*/
+    });
+
+    /*$(".radioMenu input[type=radio] ").click(function () {
+
+        var itr = $(this).attr("data-itr");
+
+        alert(itr);
+
+        // $('input:radio[name="menu_"+itr+"]').attr('checked',true);
+        //$('input:radio[value=pass]').checked = true;
+
+    });
+
+    /*$('.radioMenu').click(function(){
+        alert(555);
+        var check = true;
+        $("input:radio").each(function(){
+            var itr = $(this).attr("itr");
+            if($("input:radio[name=menu_"+itr+"]:checked").length == 0){
+                check = false;
+            }
+        });
+
+        if(check){
+            alert('One radio in each group is checked.');
+        }else{
+            alert('Please select one option in each question.');
+        }
+    });
+
+   /* $('.nested input[type=radio]').click(function () {
+         alert(66);
+        $(this).parent().find('li input[type=radio]').prop('checked', $(this).is(':checked'));
         var sibs = false;
         $(this).closest('ul').children('li').each(function () {
-            if ($('input[type=checkbox]', this).is(':checked')) sibs = true;
+            if ($('input[type=radio]', this).is(':checked')) sibs = true;
         })
         $(this).parents('ul').prev().prop('checked', sibs);
     });

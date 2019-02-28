@@ -101,6 +101,10 @@ foreach ($allWords as $data) {
         'MoveProject' => 'نقل المشروع ',
         'Search' => 'بحث',
         'Reset' => 'مسح البيانات',
+        'Role Name' => 'اسم المجموعه',
+        'Descreption' => 'الوصف',
+
+
 
         $data->wordKey => $data->name_ar,
 

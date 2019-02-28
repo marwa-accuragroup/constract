@@ -37,8 +37,12 @@ class HomeController extends Controller
 
     public function error()
     {
-
         return view('error.custom');
+    }
+
+    public function perm()
+    {
+        return view('error.permission');
     }
 
 }

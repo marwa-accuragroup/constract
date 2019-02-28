@@ -99,7 +99,7 @@ class UsergroupsController extends Controller
         $editData = Role::find($id);
         //
         $allMenu = Menu::where('parentId', '!=', 0)->get();
-        $groupMenu = UserMenu::where('groupId', '=', $id)->get();
+        $groupMenu = UserMenu::where('roleId', '=', $id)->get();
         //
         $projectCat = Cateory::all();
         $catMenu = UserMenuCat::where('groupId', '=', $id)->get();
@@ -120,7 +120,6 @@ class UsergroupsController extends Controller
         $this->validate($request, [
             'name' => 'required',
         ]);
-
 
         $update = Role::find($id);
         $update->name = $request->input('mainName');

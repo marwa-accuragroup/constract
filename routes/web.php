@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth', 'locale'], 'prefix' => 'admin', 'namespac
     Route::get('/changelang/{locale}', 'HomeController@changeLang');
     /*error=========*/
     Route::any('/error', 'HomeController@error');
+    Route::any('/perm', 'HomeController@perm');
     /*Menu=======*/
     Route::resource('menu', 'MenuController');
     Route::get('/delmenu/{id}', 'MenuController@delmenu');

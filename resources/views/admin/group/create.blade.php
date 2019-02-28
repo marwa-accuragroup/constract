@@ -60,6 +60,52 @@
 
 
 
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">القوائم </label>
+                        <div class="col-md-9">
+
+
+                            <div class="mt-checkbox-list">
+                                <ul class="" id="nested">
+                                    <?php  $categories = \App\Menu::where([ 'parentId' => 0 ])->get(); ?>
+                                    @foreach($categories as $category)
+                                        <li class=" nav-item {{ Request::is($category->link.'*') ? 'active' : '' }}">
+
+                                            <div style="float: left">
+                                                <div class="d-inline-block custom-control custom-radio mr-1">
+                                                    <input type="radio" data-itr="{{$category->id}}"
+                                                           class="radioMenu custom-control-input"
+                                                           name="menu_{{$category->id}}" id="menu_{{$category->id}}" value="1">
+                                                    <label class="custom-control-label" for="radio1">نعم  </label>
+                                                </div>
+                                                <div class="d-inline-block custom-control custom-radio mr-1">
+                                                    <input type="radio" class="radioMenu custom-control-input"
+                                                           name="menu_{{$category->id}}" id="menu_{{$category->id}}" value="0">
+                                                    <label class="custom-control-label" for="radio2" checked="">لا  </label>
+                                                </div>
+                                            </div>
+
+
+
+                                            <a href="#">
+                                                <i class="{{ $category->icon }}"></i>
+                                                <span class="menu-title" data-i18n="nav.dash.main">
+                            {{ $category['name_'.App::getLocale()] }} </span>
+                                            </a>
+                                            @if(count($category->childs))
+                                                @include('admin.group.manageChild',['childs' => $category->childs])
+                                            @endif
+                                        </li>
+                                    @endforeach
+
+
+
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
 
 
                     <div class="form-group">
